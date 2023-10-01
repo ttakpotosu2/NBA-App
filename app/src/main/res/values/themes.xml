@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<resources>-->
+<!--    <style name="Theme.BasketBallApp" parent="android:Theme.Material.Light.NoActionBar" />-->
+<!--</resources>-->
+
+<resources>
+<!-- Base application theme. -->
+<style name="Theme.BasketBallApp"
+    parent="android:Theme.Material.Light.NoActionBar">
+    <!-- Drawable to be rendered in window's background
+         while the activity is being loaded -->
+</style>
+</resources>

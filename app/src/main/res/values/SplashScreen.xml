@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="android:windowSplashScreenBackground">@drawable/splash_screen_background</item>
+        <item name="android:windowSplashScreenAnimationDuration">3000</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/avd_anim</item>
+        <item name="postSplashScreenTheme">@style/Theme.BasketBallApp</item>
+    </style>
+</resources>
