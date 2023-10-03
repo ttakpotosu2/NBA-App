@@ -67,5 +67,4 @@ object AppModule {
     fun getApiClient(
         retrofit: Retrofit
     ): NbaAppApi { return retrofit.create(NbaAppApi::class.java) }
-
 }

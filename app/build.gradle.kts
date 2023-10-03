@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id ("com.android.application")
     id ("org.jetbrains.kotlin.android")
@@ -12,6 +14,8 @@ android {
     compileSdk = 34
 
     defaultConfig {
+
+
         applicationId = "com.example.basketballapp"
         minSdk = 31
         targetSdk = 33
@@ -32,6 +36,13 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            val localProperties = Properties()
+            val localPropertiesFile = rootProject.file("local.properties")
+            localProperties.load(localPropertiesFile.reader())
+
+            buildConfigField("String", "API_KEY", "\"${localProperties.getProperty("API_KEY")}\"")
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -42,6 +53,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
