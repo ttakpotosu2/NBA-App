@@ -1,6 +1,6 @@
 package com.example.basketballapp.data.model
 
-data class Response(
+data class GamesResponse(
     val arena: Arena,
     val date: Date,
     val id: Int,

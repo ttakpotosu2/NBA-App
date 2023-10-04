@@ -4,6 +4,6 @@ data class Games(
     val errors: List<Any>,
     val `get`: String,
     val parameters: Parameters,
-    val response: List<Response>,
+    val response: List<GamesResponse>,
     val results: Int
 )
