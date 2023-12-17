@@ -5,6 +5,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Teams(
-    @SerializedName("home") val home: HomeTeam,
+    val home: HomeTeam,
     @SerializedName("visitors") val visiting: VisitingTeam
 )

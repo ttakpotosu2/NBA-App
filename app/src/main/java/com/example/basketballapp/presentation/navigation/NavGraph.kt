@@ -4,8 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import com.example.basketballapp.presentation.screens.GameDetailScreen
 import com.example.basketballapp.presentation.screens.GamesScreen
-import com.example.basketballapp.presentation.screens.HomeScreen
 
 @Composable
 fun NavGraph(
@@ -16,7 +17,17 @@ fun NavGraph(
         startDestination = Screens.GamesScreen.route
     ) {
         composable(route = Screens.GamesScreen.route){
-            GamesScreen()
+            GamesScreen(
+                toGameDetailScreen = {
+                    navHostController.navigate("game_detail_screen/${it}")
+                }
+            )
+        }
+        composable(
+            route = Screens.GameDetailScreen.route,
+            arguments = listOf(navArgument("id"){ defaultValue = 0 })
+        ){
+            GameDetailScreen()
         }
     }
 }

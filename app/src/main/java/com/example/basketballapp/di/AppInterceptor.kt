@@ -8,8 +8,8 @@ class AppInterceptor: Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
             .newBuilder()
-            .addHeader("X-RapidAPI-Key", BuildConfig.API_KEY)
-            .addHeader("X-RapidAPI-Host", "api-nba-v1.p.rapidapi.com")
+            .addHeader(name = "X-RapidAPI-Key", value = BuildConfig.API_KEY)
+            .addHeader(name = "X-RapidAPI-Host", value = "api-nba-v1.p.rapidapi.com")
             .build()
         return chain.proceed(request)
     }

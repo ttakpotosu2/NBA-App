@@ -21,5 +21,4 @@ fun HomeScreen(
     gamesViewModel: GamesViewModel = hiltViewModel()
 ) {
 
-
 }

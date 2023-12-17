@@ -2,19 +2,18 @@ package com.example.basketballapp.presentation.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.basketballapp.data.model.GamesResponse
+import com.example.basketballapp.data.model.GameDetailResponse
 import com.example.basketballapp.data.remote.NbaAppApi
 
 class GamesPagingSource(
     private val api: NbaAppApi,
     private val season: String
-): PagingSource<Int, GamesResponse>() {
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, GamesResponse> {
+): PagingSource<Int, GameDetailResponse>() {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, GameDetailResponse> {
         val currentPage = params.key ?: 1
         return try {
             val games = api.getGames(season = season)
             val endOfPaginationReached = games.response.isEmpty()
-
             if (games.response.isNotEmpty()){
                 LoadResult.Page(
                     data = games.response,
@@ -33,7 +32,7 @@ class GamesPagingSource(
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, GamesResponse>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, GameDetailResponse>): Int? {
         return state.anchorPosition
     }
 }

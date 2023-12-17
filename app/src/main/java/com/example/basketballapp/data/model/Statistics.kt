@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Statistic(
+data class Statistics(
     val assists: Int,
     val biggestLead: Int,
     val blocks: Int,

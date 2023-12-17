@@ -17,9 +17,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    private val headerClient = OkHttpClient.Builder().apply {
-        addInterceptor(AppInterceptor())
-    }.build()
 
     private const val BASE_URL = "https://api-nba-v1.p.rapidapi.com/"
 
@@ -45,6 +42,7 @@ object AppModule {
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
+            .addInterceptor(AppInterceptor())
             .build()
     }
 
@@ -58,7 +56,6 @@ object AppModule {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(client)
-            .client(headerClient)
             .build()
     }
 
