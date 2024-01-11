@@ -1,11 +1,11 @@
-package com.example.basketballapp.presentation.viewModels
+package com.example.basketballapp.presentation.games
 
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.basketballapp.data.repositories.GamesRepo
-import com.example.basketballapp.domain.GameDetail
+import com.example.basketballapp.data.repository.GamesRepo
+import com.example.basketballapp.domain.model.GameDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.SharingStarted
@@ -14,10 +14,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
-sealed class GameState {
-    object Loading : GameState()
-    data class Success(val data: GameDetail) : GameState()
-}
+
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @HiltViewModel
@@ -30,9 +27,9 @@ class GameDetailViewModel @Inject constructor(
         val gameData = repo.getGame(it)
         Log.e("tag", "data = $gameData")
         flowOf(
-            GameState.Success(
-                data = gameData
-            )
+			GameState.Success(
+				data = gameData
+			)
         )
     }.stateIn(
         scope = viewModelScope,
@@ -53,4 +50,9 @@ class GameDetailViewModel @Inject constructor(
 //            _game.value = GameState.Success(data = result)
 //        }
 //    }
+}
+
+sealed class GameState {
+    object Loading : GameState()
+    data class Success(val data: GameDetail) : GameState()
 }

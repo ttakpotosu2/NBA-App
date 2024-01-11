@@ -1,4 +1,4 @@
-package com.example.basketballapp.presentation.screens
+package com.example.basketballapp.presentation.games
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

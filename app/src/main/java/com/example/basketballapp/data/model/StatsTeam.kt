@@ -1,6 +1,5 @@
 package com.example.basketballapp.data.model
 
-
 data class StatsTeam(
     val code: String,
     val id: Int,

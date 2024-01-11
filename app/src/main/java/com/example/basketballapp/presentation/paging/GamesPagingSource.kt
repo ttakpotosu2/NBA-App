@@ -12,7 +12,7 @@ class GamesPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, GameDetailResponse> {
         val currentPage = params.key ?: 1
         return try {
-            val games = api.getGames(season = season)
+            val games = api.getGames(date = season)
             val endOfPaginationReached = games.response.isEmpty()
             if (games.response.isNotEmpty()){
                 LoadResult.Page(

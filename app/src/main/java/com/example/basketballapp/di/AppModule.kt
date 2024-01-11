@@ -1,6 +1,8 @@
 package com.example.basketballapp.di
 
 import com.example.basketballapp.data.remote.NbaAppApi
+import com.example.basketballapp.data.repository.BasketballAppRepositoryImpl
+import com.example.basketballapp.domain.repository.BasketballAppRepository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -16,8 +18,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
-
+    
     private const val BASE_URL = "https://api-nba-v1.p.rapidapi.com/"
 
     @Provides
@@ -64,4 +65,11 @@ object AppModule {
     fun getApiClient(
         retrofit: Retrofit
     ): NbaAppApi { return retrofit.create(NbaAppApi::class.java) }
+    
+    @Provides
+    @Singleton
+    fun provideRepo(api: NbaAppApi): BasketballAppRepository{
+        return BasketballAppRepositoryImpl(api)
+    }
+    
 }

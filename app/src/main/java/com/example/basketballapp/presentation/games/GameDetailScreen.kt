@@ -1,4 +1,4 @@
-package com.example.basketballapp.presentation.screens
+package com.example.basketballapp.presentation.games
 
 import android.util.Log
 import androidx.compose.foundation.Image
@@ -24,8 +24,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.example.basketballapp.presentation.common.VerticalGrid
-import com.example.basketballapp.presentation.viewModels.GameState
-import com.example.basketballapp.presentation.viewModels.GameDetailViewModel
 import com.valentinilk.shimmer.shimmer
 
 @Composable

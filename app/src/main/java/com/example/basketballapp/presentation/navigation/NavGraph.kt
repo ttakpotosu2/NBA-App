@@ -5,8 +5,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.basketballapp.presentation.screens.GameDetailScreen
-import com.example.basketballapp.presentation.screens.GamesScreen
+import com.example.basketballapp.presentation.games.GameDetailScreen
+import com.example.basketballapp.presentation.games.GamesScreen
 
 @Composable
 fun NavGraph(

@@ -1,6 +1,6 @@
 package com.example.basketballapp.data.model
 
-import com.example.basketballapp.domain.GameDetail
+import com.example.basketballapp.domain.model.GameDetail
 
 data class GameDetailResponse(
     val arena: Arena,

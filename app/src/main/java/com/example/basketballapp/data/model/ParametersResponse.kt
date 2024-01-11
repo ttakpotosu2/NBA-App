@@ -1,5 +1,5 @@
 package com.example.basketballapp.data.model
 
-//data class ParametersResponse(
-//    val season: String
-//)
+data class ParametersResponse(
+    val season: String
+)

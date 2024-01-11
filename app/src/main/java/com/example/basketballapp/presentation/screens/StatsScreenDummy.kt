@@ -58,7 +58,7 @@ fun StatsScreenDummy() {
                 painter = painterResource(id = R.drawable.two),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
-                //alignment = Alignment.CenterEnd,
+                //alignment = Alignment.CenterEnd,TODO: Fix alignment
                 modifier = Modifier
                     .fillMaxHeight()
                     .weight(1f)

@@ -1,4 +1,4 @@
-package com.example.basketballapp.domain
+package com.example.basketballapp.domain.model
 
 import com.example.basketballapp.data.model.Arena
 import com.example.basketballapp.data.model.Date
