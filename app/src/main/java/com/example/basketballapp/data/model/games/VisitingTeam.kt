@@ -1,9 +1,9 @@
-package com.example.basketballapp.data.model
+package com.example.basketballapp.data.model.games
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class HomeTeam(
+data class VisitingTeam(
     val code: String,
     val id: Int,
     val logo: String,

@@ -1,4 +1,4 @@
-package com.example.basketballapp.presentation.common
+package com.example.basketballapp.presentation.navigation
 
 import com.example.basketballapp.R
 
@@ -8,19 +8,16 @@ enum class NavigationBarItems(
 ){
 	Games(
 		icon = R.drawable.ball_basket_basketball_svgrepo_com,
-		route = ""
+		route = Screens.GamesScreen.route
 	),
-	Teams(
-		icon = R.drawable.shield_bolt_svgrepo_com,
-		route = ""
+	Standings(
+		icon = R.drawable.chart_square_svgrepo_com,
+		route = Screens.StandingsScreen.route
 	),
-	Players(
+	Explore(
 		icon = R.drawable.basketball_men_sport_3_svgrepo_com,
 		route = ""
 	),
-	Stats(
-		icon = R.drawable.chart_square_svgrepo_com,
-		route = ""
-	)
+
 }
 

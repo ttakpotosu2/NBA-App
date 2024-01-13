@@ -2,7 +2,7 @@ package com.example.basketballapp.presentation.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.basketballapp.data.model.GameDetailResponse
+import com.example.basketballapp.data.model.games.GameDetailResponse
 import com.example.basketballapp.data.remote.NbaAppApi
 
 class GamesPagingSource(

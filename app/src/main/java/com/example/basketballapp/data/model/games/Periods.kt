@@ -1,4 +1,4 @@
-package com.example.basketballapp.data.model
+package com.example.basketballapp.data.model.games
 
 data class Periods(
     val current: Int,

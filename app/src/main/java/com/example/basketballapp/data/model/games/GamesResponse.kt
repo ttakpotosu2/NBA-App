@@ -1,4 +1,4 @@
-package com.example.basketballapp.data.model
+package com.example.basketballapp.data.model.games
 
 import com.example.basketballapp.domain.model.Games
 

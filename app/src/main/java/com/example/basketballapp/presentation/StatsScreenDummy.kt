@@ -1,4 +1,4 @@
-package com.example.basketballapp.presentation.screens
+package com.example.basketballapp.presentation
 
 import android.util.Log
 import androidx.compose.foundation.Image

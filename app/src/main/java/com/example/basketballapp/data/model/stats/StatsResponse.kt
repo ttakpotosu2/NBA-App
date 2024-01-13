@@ -1,4 +1,4 @@
-package com.example.basketballapp.data.model
+package com.example.basketballapp.data.model.stats
 
 data class StatsResponse(
     val statistics: List<Statistics>,

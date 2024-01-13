@@ -1,6 +1,7 @@
-package com.example.basketballapp.data.model
+package com.example.basketballapp.data.model.standings
 
-data class StatsTeam(
+
+data class Team(
     val code: String,
     val id: Int,
     val logo: String,

@@ -43,7 +43,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import com.example.basketballapp.data.model.GameDetailResponse
+import com.example.basketballapp.data.model.games.GameDetailResponse
 import com.example.basketballapp.presentation.ui.theme.JomhuriaRegular
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -137,7 +137,7 @@ fun SeasonMenu() {
 
 @Composable
 fun GamesCard(
-    gameDetailResponse: GameDetailResponse, onItemClick: () -> Unit
+	gameDetailResponse: GameDetailResponse, onItemClick: () -> Unit
 ) {
     val visitingTeamLogo = rememberAsyncImagePainter(model = gameDetailResponse.teams?.visiting?.logo)
     val homeTeamLogo = rememberAsyncImagePainter(model = gameDetailResponse.teams?.home?.logo)

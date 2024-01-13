@@ -5,10 +5,6 @@ sealed class Screens(val route: String) {
     object SplashScreen : Screens(route = "splash_screen")
     object GamesScreen : Screens(route = "games_screen")
     object GameDetailScreen : Screens(route = "game_detail_screen/{id}")
+    
+    object StandingsScreen: Screens(route = "standings_screen")
 }
-
-data class NavItems(
-    val label: String,
-    val route: String
-)
-

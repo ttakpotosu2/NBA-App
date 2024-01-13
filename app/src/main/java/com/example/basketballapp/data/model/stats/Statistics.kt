@@ -1,4 +1,4 @@
-package com.example.basketballapp.data.model
+package com.example.basketballapp.data.model.stats
 
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable

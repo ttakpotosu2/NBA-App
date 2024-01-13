@@ -7,11 +7,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -49,16 +49,17 @@ fun GamesListItem(
 				.fillMaxWidth()
 				.clip(RoundedCornerShape(3.dp))
 				.border(width = 1.dp, color = Color.LightGray, shape = RoundedCornerShape(3.dp))
-				.background(Color.White)
+				.background(Color(0xff191919))
 				.padding(12.dp)
 		){
 			Column(
 				verticalArrangement = Arrangement.Center,
-				horizontalAlignment = Alignment.CenterHorizontally
+				horizontalAlignment = Alignment.CenterHorizontally,
+				modifier = Modifier.width(80.dp)
 			) {
 				SubcomposeAsyncImage(
 					model = games.teams?.visiting?.logo,
-					loading = { CircularProgressIndicator(color = Color.White) },
+					loading = { CircularProgressIndicator(color = Color.LightGray) },
 					contentDescription = null,
 					contentScale = ContentScale.Inside,
 					modifier = Modifier.size(40.dp)
@@ -67,16 +68,17 @@ fun GamesListItem(
 					Text(
 						text = it,
 						style = TextStyle(
-							color = Color.Black,
+							color = Color.LightGray,
 							fontFamily = Anton,
 							fontSize = 16.sp
 						)
 					)
 				}
 			}
-			Spacer(modifier = Modifier.weight(1f))
 			Column (
-				verticalArrangement = Arrangement.Top
+				verticalArrangement = Arrangement.Top,
+				horizontalAlignment = Alignment.CenterHorizontally,
+				modifier = Modifier.weight(1f)
 			){
 				Row (
 					verticalAlignment = Alignment.CenterVertically
@@ -87,9 +89,9 @@ fun GamesListItem(
 					Text(
 						text = visiting.toString(),
 						style = TextStyle(
-							color = Color.Black,
+							color = Color.LightGray,
 							fontFamily = Anton,
-							fontSize = 26.sp
+							fontSize = 20.sp
 						)
 					)
 					if (visiting != null) {
@@ -101,17 +103,17 @@ fun GamesListItem(
 							} else {
 								Icons.Default.ArrowDropDown
 							},
-							modifier = Modifier.size(26.dp),
+							modifier = Modifier.size(26.dp).offset(y = 2.dp),
 							contentDescription = null,
-							tint = Color.Black,
+							tint = Color.LightGray,
 						)
 					}
 					Text(
 						text = home.toString(),
 						style = TextStyle(
-							color = Color.Black,
+							color = Color.LightGray,
 							fontFamily = Anton,
-							fontSize = 26.sp
+							fontSize = 20.sp
 						)
 					)
 				}
@@ -119,21 +121,22 @@ fun GamesListItem(
 					Text(
 						text = it.substring(11,19),
 						style = TextStyle(
-							color = Color.Black,
+							color = Color.LightGray,
 							fontFamily = Anton,
 							fontSize = 14.sp
 						)
 					)
 				}
 			}
-			Spacer(modifier = Modifier.weight(1f))
 			Column (
-				verticalArrangement = Arrangement.Center
+				verticalArrangement = Arrangement.Center,
+				horizontalAlignment = Alignment.CenterHorizontally,
+				modifier = Modifier.width(80.dp)
 			){
 				SubcomposeAsyncImage(
 					model = games.teams?.home?.logo,
 					loading = {
-						CircularProgressIndicator(color = Color.White)
+						CircularProgressIndicator(color = Color.LightGray)
 					},
 					contentDescription = null,
 					contentScale = ContentScale.Inside,
@@ -143,7 +146,7 @@ fun GamesListItem(
 					Text(
 						text = it,
 						style = TextStyle(
-							color = Color.Black,
+							color = Color.LightGray,
 							fontFamily = Anton,
 							fontSize = 16.sp
 						)
@@ -162,7 +165,7 @@ fun GamesListItem(
 					color = Color.DarkGray,
 					shape = RoundedCornerShape(3.dp)
 				)
-				.background(Color.White)
+				.background(Color.LightGray)
 				.padding(vertical = 3.dp, horizontal = 6.dp)
 		) {
 			Box(
@@ -170,17 +173,9 @@ fun GamesListItem(
 					.clip(CircleShape)
 					.background(
 						color = when (games.status?.long) {
-							"In Play" -> {
-								Color.Green
-							}
-							
-							"Finished" -> {
-								Color.Gray
-							}
-							
-							else -> {
-								Color.Red
-							}
+							"In Play" -> { Color.Green }
+							"Finished" -> { Color.Gray }
+							else -> { Color.Red }
 						}
 					)
 					.size(10.dp)

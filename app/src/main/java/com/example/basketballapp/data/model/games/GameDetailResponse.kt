@@ -1,22 +1,22 @@
-package com.example.basketballapp.data.model
+package com.example.basketballapp.data.model.games
 
 import com.example.basketballapp.domain.model.GameDetail
 
 data class GameDetailResponse(
-    val arena: Arena,
-    val date: Date,
-    val id: Int,
-    val leadChanges: Int,
-    val league: String,
-    val nugget: String,
-    val officials: List<String>,
-    val periods: Periods,
-    val scores: Scores,
-    val season: Int,
-    val stage: Int,
-    val status: Status,
-    val teams: Teams,
-    val timesTied: Int
+	val arena: Arena,
+	val date: Date,
+	val id: Int,
+	val leadChanges: Int,
+	val league: String,
+	val nugget: String,
+	val officials: List<String>,
+	val periods: Periods,
+	val scores: Scores,
+	val season: Int,
+	val stage: Int,
+	val status: Status,
+	val teams: Teams,
+	val timesTied: Int
 ) {
     fun toGameDetail(): GameDetail {
         return GameDetail(

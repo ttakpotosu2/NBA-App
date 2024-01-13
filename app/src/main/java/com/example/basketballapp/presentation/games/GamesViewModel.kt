@@ -19,7 +19,7 @@ class GamesViewModel @Inject constructor(
 	val state: State<GamesState> = _state
 	
 	init {
-		getGames(date = _state.value.todayDate)
+		getGames(date = _state.value.currentDate)
 	}
 	
 	private fun getGames(date: String) {
