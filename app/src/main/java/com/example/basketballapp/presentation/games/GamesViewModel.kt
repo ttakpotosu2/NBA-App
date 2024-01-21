@@ -22,7 +22,9 @@ class GamesViewModel @Inject constructor(
 		getGames(date = _state.value.currentDate)
 	}
 	
-	private fun getGames(date: String) {
+	
+	
+	fun getGames(date: String) {
 		getGamesUseCase(date).onEach { result ->
 			when (result) {
 				is Resource.Success -> {

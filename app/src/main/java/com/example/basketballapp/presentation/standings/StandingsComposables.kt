@@ -2,7 +2,6 @@ package com.example.basketballapp.presentation.standings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -24,17 +23,17 @@ fun StandingsItem(
 	standings: StandingDetail,
 	rank: String
 ) {
-	Row (
+	Row(
 		verticalAlignment = Alignment.CenterVertically,
 		modifier = Modifier
 			.fillMaxWidth()
 			.height(50.dp)
 			.padding(12.dp)
-	){
-		Row (
+	) {
+		Row(
 			Modifier.weight(4f),
 			horizontalArrangement = Arrangement.spacedBy(6.dp)
-		){
+		) {
 			Text(text = rank, color = Color.White)
 			SubcomposeAsyncImage(
 				model = standings.team.logo,
@@ -47,39 +46,76 @@ fun StandingsItem(
 			)
 			Text(text = standings.team.code, color = Color.White)
 		}
-		Box(modifier = Modifier.weight(1f)){
-			Text(text = "${standings.win.total}", color = Color.White)
-		}
-		Box(modifier = Modifier.weight(1f)) {
-			Text(text = "${standings.loss.total}", color = Color.White)
-		}
-		Box (modifier = Modifier.weight(1.5f)){
-			Text(text = standings.win.percentage, color = Color.White)
-		}
-		Box(modifier = Modifier.weight(1f)) {
-			Text(text = "${standings.win.lastTen}-${standings.loss.lastTen}")
-		}
-		Box(modifier = Modifier.weight(1f)) {
-			Text(text = if (standings.gamesBehind == null) "-" else "${standings.gamesBehind}")
-		}
+		
+		Text(
+			text = "${standings.win.total}",
+			color = Color.White,
+			modifier = Modifier.weight(1f)
+		)
+		Text(
+			text = "${standings.loss.total}",
+			color = Color.White,
+			modifier = Modifier.weight(1f)
+		)
+		Text(
+			text = standings.win.percentage,
+			color = Color.White,
+			modifier = Modifier.weight(1.5f)
+		)
+		Text(
+			text = "${standings.win.lastTen}-${standings.loss.lastTen}",
+			color = Color.White,
+			modifier = Modifier.weight(1f)
+		)
+		Text(
+			text = standings.gamesBehind ?: "-",
+			color = Color.White,
+			modifier = Modifier.weight(1f)
+		)
 	}
 }
 
 @Composable
-fun StandingsHeading() {
-	Row (
+fun StandingsHeading(
+
+) {
+	Row(
 		verticalAlignment = Alignment.CenterVertically,
 		modifier = Modifier
 			.fillMaxWidth()
 			.background(Color.LightGray)
 			.height(50.dp)
 			.padding(12.dp)
-	){
-		Box(Modifier.weight(4f)){ Text(text = "TEAMS", color = Color.Black) }
-		Box(Modifier.weight(1f)){ Text(text = "W", color = Color.Black) }
-		Box(Modifier.weight(1f)) { Text(text = "L", color = Color.Black) }
-		Box (Modifier.weight(1.5f)){ Text(text = "PCT", color = Color.Black) }
-		Box(Modifier.weight(1f)) { Text(text = "L10", color = Color.Black) }
-		Box(Modifier.weight(1f)) { Text(text ="GB", color = Color.Black) }
+	) {
+		Text(
+			text = "TEAMS",
+			color = Color.Black,
+			modifier = Modifier.weight(4f)
+		)
+		Text(
+			text = "W",
+			color = Color.Black,
+			modifier = Modifier.weight(1f)
+		)
+		Text(
+			text = "L",
+			color = Color.Black,
+			modifier = Modifier.weight(1f)
+		)
+		Text(
+			text = "PCT",
+			color = Color.Black,
+			modifier = Modifier.weight(1.5f)
+		)
+		Text(
+			text = "L10",
+			color = Color.Black,
+			modifier = Modifier.weight(1f)
+		)
+		Text(
+			text = "GB",
+			color = Color.Black,
+			modifier = Modifier.weight(1f)
+		)
 	}
 }

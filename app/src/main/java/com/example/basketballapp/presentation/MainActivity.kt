@@ -18,7 +18,6 @@ class MainActivity : ComponentActivity() {
             BasketBallAppTheme {
                 NavGraph(navHostController = rememberNavController())
             }
-//            GamesScreenDummy()
         }
     }
 }

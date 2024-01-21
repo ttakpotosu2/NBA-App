@@ -51,7 +51,7 @@ fun GameDetailScreen(
 	viewModel: GameDetailViewModel = hiltViewModel(),
 	//onNavItemClicked: () -> Unit
 ) {
-	val state = viewModel.game.value
+	val state = viewModel.state.value
 	
 	Scaffold(
 		bottomBar = { NavBar(navController) }

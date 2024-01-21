@@ -1,5 +1,6 @@
 package com.example.basketballapp.presentation.navigation
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -16,6 +17,12 @@ fun NavGraph(
         navController = navHostController,
         startDestination = Screens.GamesScreen.route
     ) {
+        navHostController.addOnDestinationChangedListener { controller, destination, arguments ->
+            Log.e(
+                "nav",
+                destination.route.toString()
+            )
+        }
         composable(route = Screens.GamesScreen.route){
             GamesScreen(
                 toGameDetailScreen = { id ->

@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.SubcomposeAsyncImage
 import com.example.basketballapp.domain.model.GameDetail
 import com.example.basketballapp.presentation.ui.theme.Anton
+import java.time.LocalDate
 
 @Composable
 fun GamesListItem(
@@ -41,17 +42,19 @@ fun GamesListItem(
 	modifier: Modifier = Modifier
 ) {
 	Box(
-		modifier = modifier.fillMaxWidth().clickable { onClick(games.id) },
+		modifier = modifier
+			.fillMaxWidth()
+			.clickable { onClick(games.id) },
 		contentAlignment = Alignment.Center
 	) {
-		Row (
+		Row(
 			modifier = modifier
 				.fillMaxWidth()
 				.clip(RoundedCornerShape(3.dp))
 				.border(width = 1.dp, color = Color.LightGray, shape = RoundedCornerShape(3.dp))
 				.background(Color(0xff191919))
 				.padding(12.dp)
-		){
+		) {
 			Column(
 				verticalArrangement = Arrangement.Center,
 				horizontalAlignment = Alignment.CenterHorizontally,
@@ -75,14 +78,14 @@ fun GamesListItem(
 					)
 				}
 			}
-			Column (
+			Column(
 				verticalArrangement = Arrangement.Top,
 				horizontalAlignment = Alignment.CenterHorizontally,
 				modifier = Modifier.weight(1f)
-			){
-				Row (
+			) {
+				Row(
 					verticalAlignment = Alignment.CenterVertically
-				){
+				) {
 					val home = games.scores?.home?.points
 					val visiting = games.scores?.visitors?.points
 					
@@ -103,7 +106,9 @@ fun GamesListItem(
 							} else {
 								Icons.Default.ArrowDropDown
 							},
-							modifier = Modifier.size(26.dp).offset(y = 2.dp),
+							modifier = Modifier
+								.size(26.dp)
+								.offset(y = 2.dp),
 							contentDescription = null,
 							tint = Color.LightGray,
 						)
@@ -119,7 +124,7 @@ fun GamesListItem(
 				}
 				games.date?.start?.let {
 					Text(
-						text = it.substring(11,19),
+						text = it.substring(11, 19),
 						style = TextStyle(
 							color = Color.LightGray,
 							fontFamily = Anton,
@@ -128,11 +133,11 @@ fun GamesListItem(
 					)
 				}
 			}
-			Column (
+			Column(
 				verticalArrangement = Arrangement.Center,
 				horizontalAlignment = Alignment.CenterHorizontally,
 				modifier = Modifier.width(80.dp)
-			){
+			) {
 				SubcomposeAsyncImage(
 					model = games.teams?.home?.logo,
 					loading = {
@@ -173,9 +178,17 @@ fun GamesListItem(
 					.clip(CircleShape)
 					.background(
 						color = when (games.status?.long) {
-							"In Play" -> { Color.Green }
-							"Finished" -> { Color.Gray }
-							else -> { Color.Red }
+							"In Play" -> {
+								Color.Green
+							}
+							
+							"Finished" -> {
+								Color.Gray
+							}
+							
+							else -> {
+								Color.Red
+							}
 						}
 					)
 					.size(10.dp)
@@ -186,6 +199,118 @@ fun GamesListItem(
 					style = TextStyle(
 						color = Color.Black
 					)
+				)
+			}
+		}
+	}
+}
+
+@Composable
+fun DateRow(
+	modifier: Modifier = Modifier,
+	currentDate: LocalDate
+) {
+	Column(
+		horizontalAlignment = Alignment.CenterHorizontally,
+		verticalArrangement = Arrangement.spacedBy(12.dp),
+		modifier = modifier.padding(12.dp)
+	) {
+		val nextDay = currentDate.plusDays(1)
+		val nextTwoDays = currentDate.plusDays(2)
+		val nextThreeDays = currentDate.plusDays(3)
+		val previousDay = currentDate.minusDays(1)
+		val previousTwoDays = currentDate.minusDays(2)
+		val previousThreeDays = currentDate.minusDays(3)
+		
+		val style = TextStyle(
+			fontSize = 16.sp,
+			color = Color.White
+		)
+		Text(text = currentDate.month.toString(), style = style)
+		Row(
+			modifier = Modifier.fillMaxWidth(),
+			horizontalArrangement = Arrangement.SpaceEvenly
+		) {
+			Column(
+				horizontalAlignment = Alignment.CenterHorizontally,
+				modifier = modifier.weight(1f),
+				verticalArrangement = Arrangement.spacedBy(6.dp)
+			) {
+				Text(text = previousThreeDays.dayOfWeek.toString().substring(0, 1), style = style)
+				Text(
+					text = previousThreeDays.dayOfMonth.toString(), style = style,
+					modifier = modifier.padding(6.dp)
+				)
+			}
+			Column(
+				horizontalAlignment = Alignment.CenterHorizontally,
+				modifier = modifier.weight(1f),
+				verticalArrangement = Arrangement.spacedBy(6.dp)
+			) {
+				Text(text = previousTwoDays.dayOfWeek.toString().substring(0, 1), style = style)
+				Text(
+					text = previousTwoDays.dayOfMonth.toString(), style = style,
+					modifier = modifier.padding(6.dp)
+				)
+			}
+			Column(
+				horizontalAlignment = Alignment.CenterHorizontally,
+				modifier = modifier.weight(1f),
+				verticalArrangement = Arrangement.spacedBy(6.dp)
+			) {
+				Text(text = previousDay.dayOfWeek.toString().substring(0, 1), style = style)
+				Text(
+					text = previousDay.dayOfMonth.toString(), style = style,
+					modifier = modifier.padding(6.dp)
+				)
+			}
+			Column(
+				horizontalAlignment = Alignment.CenterHorizontally,
+				modifier = modifier.weight(1f),
+				verticalArrangement = Arrangement.spacedBy(6.dp)
+			) {
+				Text(text = currentDate.dayOfWeek.toString().substring(0, 1), style = style)
+				Text(
+					text = currentDate.dayOfMonth.toString(),
+					style = style.copy(color = Color.Black),
+					modifier = modifier
+						.clip(RoundedCornerShape(3.dp))
+						.background(Color.White)
+						.padding(6.dp)
+				)
+			}
+			Column(
+				horizontalAlignment = Alignment.CenterHorizontally,
+				modifier = modifier.weight(1f),
+				verticalArrangement = Arrangement.spacedBy(6.dp)
+			) {
+				Text(text = nextDay.dayOfWeek.toString().substring(0, 1), style = style)
+				Text(
+					text = nextDay.dayOfMonth.toString(),
+					style = style,
+					modifier = modifier.padding(6.dp)
+				)
+			}
+			Column(
+				horizontalAlignment = Alignment.CenterHorizontally,
+				modifier = modifier.weight(1f),
+				verticalArrangement = Arrangement.spacedBy(6.dp)
+			) {
+				Text(text = nextTwoDays.dayOfWeek.toString().substring(0, 1), style = style)
+				Text(
+					text = nextTwoDays.dayOfMonth.toString(), style = style,
+					modifier = modifier.padding(6.dp)
+				)
+			}
+			Column(
+				horizontalAlignment = Alignment.CenterHorizontally,
+				modifier = modifier.weight(1f),
+				verticalArrangement = Arrangement.spacedBy(6.dp)
+			) {
+				Text(text = nextThreeDays.dayOfWeek.toString().substring(0, 1), style = style)
+				Text(
+					text = nextThreeDays.dayOfMonth.toString(), style = style,
+					modifier = modifier.padding(6.dp)
 				)
 			}
 		}

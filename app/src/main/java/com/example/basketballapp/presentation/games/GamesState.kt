@@ -8,7 +8,7 @@ data class GamesState(
 	val isLoading: Boolean = false,
 	val games: Games? = null,
 	val error: String = "",
-	var currentDate: String = LocalDateTime.now().toString().substring(0, 10),
+	val currentDate: String = LocalDateTime.now().toString().substring(0, 10),
 )
 
 data class GameDetailState(

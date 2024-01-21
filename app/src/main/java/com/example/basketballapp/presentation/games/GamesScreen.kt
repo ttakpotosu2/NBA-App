@@ -1,7 +1,10 @@
 package com.example.basketballapp.presentation.games
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,16 +14,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,11 +33,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.basketballapp.presentation.navigation.NavBar
 import com.example.basketballapp.presentation.ui.theme.Anton
-import com.mrerror.singleRowCalendar.SingleRowCalendar
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import com.valentinilk.shimmer.shimmer
+import java.time.LocalDate
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun GamesScreen(
     navController: NavController,
@@ -43,7 +44,26 @@ fun GamesScreen(
     toGameDetailScreen: (Int) -> Unit
 ) {
     val state = gamesViewModel.state.value
-    var day by remember { mutableStateOf(Date()) }
+    
+    var today = LocalDate.now()
+   
+    val startDate = LocalDate.of(2023, 1, 1)
+    val endDate = LocalDate.of(2024, 12, 31)
+    val dateList = generateDateList(startDate, endDate)
+    
+    val indexOfToday = dateList.indexOf(today)
+    
+    val pagerState = rememberPagerState(
+        initialPage = indexOfToday,
+        pageCount = {dateList.size}
+    )
+    
+    LaunchedEffect(pagerState) {
+        snapshotFlow { pagerState.currentPage }.collect { page ->
+            gamesViewModel.getGames(dateList[page].toString())
+            today = dateList[page]
+        }
+    }
     
     Scaffold(
         bottomBar = { NavBar(navController)}
@@ -73,41 +93,54 @@ fun GamesScreen(
                 thickness = Dp.Hairline,
                 color = Color.White
             )
-            SingleRowCalendar(
-                onSelectedDayChange = {
-                    day = it
-                    val formatDate = SimpleDateFormat("yyyy-mm-dd", Locale.US).format(day)
-                    state.currentDate = formatDate
-                },
-                dayNumTextColor = Color.LightGray,
-                selectedDayBackgroundColor = Color.LightGray,
-                headTextColor = Color.LightGray,
-                iconsTintColor = Color.LightGray,
-                selectedDayTextColor = Color.Black
-                )
-            Divider(
-                modifier = Modifier.fillMaxWidth(),
-                thickness = Dp.Hairline,
-                color = Color.White
-            )
-            Spacer(Modifier.height(18.dp))
-            LazyColumn (
-                modifier = Modifier.padding(horizontal = 12.dp)
-            ){
-                val formatDate = SimpleDateFormat("yyyy-mm-dd", Locale.US).format(day)
-                state.currentDate = formatDate
-                state.games?.let { games ->
-                    items(games.response) {game ->
-                        GamesListItem(games = game, onClick = {toGameDetailScreen(game.id)})
-                        Spacer(modifier = Modifier.height(12.dp))
+            DateRow(currentDate = today)
+            HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize()) {page ->
+                Column (
+                    verticalArrangement = Arrangement.Top
+                ){
+                    LazyColumn(
+                        modifier = Modifier.padding(horizontal = 12.dp),
+                        verticalArrangement = Arrangement.Top
+                    ) {
+                        state.games?.let { games ->
+                            items(games.response) { game ->
+                                GamesListItem(games = game, onClick = {toGameDetailScreen(game.id)})
+                                Spacer(modifier = Modifier.height(18.dp))
+                            }
+                        }
                     }
                 }
             }
         }
     }
     if (state.isLoading){
-        CircularProgressIndicator(
-            modifier = Modifier.size(50.dp)
-        )
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .shimmer(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Box(modifier = Modifier
+                .size(50.dp)
+                .background(Color.White))
+        }
     }
+}
+
+private fun generateDateList(startDate: LocalDate, endDate: LocalDate): List<LocalDate> {
+    val dateList = mutableListOf<LocalDate>()
+    var currentDate = startDate
+    
+    while (!currentDate.isAfter(endDate)) {
+        dateList.add(currentDate)
+        currentDate = currentDate.plusDays(1)
+    }
+    return dateList
+}
+
+@Composable
+fun DateItem(date: LocalDate) {
+    val dayOfWeek = date.dayOfWeek
+    Text(text = "date is $dayOfWeek $date", color = Color.White)
 }
