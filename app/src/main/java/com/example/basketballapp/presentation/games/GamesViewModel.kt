@@ -18,12 +18,6 @@ class GamesViewModel @Inject constructor(
 	private val _state = mutableStateOf(GamesState())
 	val state: State<GamesState> = _state
 	
-	init {
-		getGames(date = _state.value.currentDate)
-	}
-	
-	
-	
 	fun getGames(date: String) {
 		getGamesUseCase(date).onEach { result ->
 			when (result) {
@@ -43,7 +37,6 @@ class GamesViewModel @Inject constructor(
 		}.launchIn(viewModelScope)
 	}
 }
-
 
 //    private val _seasonQuery = mutableStateOf("2023")
 //    val seasonQuery = _seasonQuery

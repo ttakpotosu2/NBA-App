@@ -24,7 +24,4 @@ class GetGameByIdUseCase @Inject constructor(
 			emit(Resource.Error("Check your internet connection"))
 		}
 	}
-
-
-
 }

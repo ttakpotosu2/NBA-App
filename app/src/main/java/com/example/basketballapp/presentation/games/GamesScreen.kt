@@ -60,8 +60,8 @@ fun GamesScreen(
     
     LaunchedEffect(pagerState) {
         snapshotFlow { pagerState.currentPage }.collect { page ->
-            gamesViewModel.getGames(dateList[page].toString())
             today = dateList[page]
+            gamesViewModel.getGames(dateList[page].toString())
         }
     }
     
@@ -94,7 +94,7 @@ fun GamesScreen(
                 color = Color.White
             )
             DateRow(currentDate = today)
-            HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize()) {page ->
+            HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize()) {
                 Column (
                     verticalArrangement = Arrangement.Top
                 ){

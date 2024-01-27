@@ -13,7 +13,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -46,35 +45,18 @@ class GameDetailViewModel @Inject constructor(
             }
         }.launchIn(viewModelScope)
     }
-
-//
-//    val state = savedStateHandle.getStateFlow("id", 0).flatMapLatest {
-//        val gameData = getGameByIdUseCase(it)
-//        val con1 = gameData.map { resource ->
-//            resource.data }
-//        Log.e("tag", "data = $gameData")
-//        flowOf( GameDetailState(game = con1)
-//        )
-//    }.stateIn(
-//        scope = viewModelScope,
-//        started = SharingStarted.WhileSubscribed(500L),
-//        initialValue = GameDetailState()
-//    )
-//
-//
-//
     
-    private val _game = mutableStateOf(GameDetailState(isLoading = true))
-    val game: State<GameDetailState> = _game
-
-    init {
-        savedStateHandle.get<Int>(Constants.PARAM_GAME_ID)?.let { gameById(it) }
-    }
-
-    private fun gameById(gameId: Int){
-        viewModelScope.launch{
-            val result = repo.getGame(gameId)
-            _game.value = GameDetailState(game = result)
-        }
-    }
+//    private val _game = mutableStateOf(GameDetailState(isLoading = true))
+//    val game: State<GameDetailState> = _game
+//
+//    init {
+//        savedStateHandle.get<Int>(Constants.PARAM_GAME_ID)?.let { gameById(it) }
+//    }
+//
+//    private fun gameById(gameId: Int){
+//        viewModelScope.launch{
+//            val result = repo.getGame(gameId)
+//            _game.value = GameDetailState(game = result)
+//        }
+//    }
 }

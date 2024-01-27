@@ -2,13 +2,12 @@ package com.example.basketballapp.presentation.games
 
 import com.example.basketballapp.domain.model.GameDetail
 import com.example.basketballapp.domain.model.Games
-import java.time.LocalDateTime
 
 data class GamesState(
 	val isLoading: Boolean = false,
 	val games: Games? = null,
 	val error: String = "",
-	val currentDate: String = LocalDateTime.now().toString().substring(0, 10),
+	val currentDate: String = "",
 )
 
 data class GameDetailState(
