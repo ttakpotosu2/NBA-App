@@ -1,11 +1,10 @@
 package com.example.basketballapp.presentation.games
 
 import com.example.basketballapp.domain.model.GameDetail
-import com.example.basketballapp.domain.model.Games
 
 data class GamesState(
 	val isLoading: Boolean = false,
-	val games: Games? = null,
+	val games: List<GameDetail> = emptyList(),
 	val error: String = "",
 	val currentDate: String = "",
 )

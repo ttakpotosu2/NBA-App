@@ -103,7 +103,7 @@ fun GamesScreen(
                         verticalArrangement = Arrangement.Top
                     ) {
                         state.games?.let { games ->
-                            items(games.response) { game ->
+                            items(games) { game ->
                                 GamesListItem(games = game, onClick = {toGameDetailScreen(game.id)})
                                 Spacer(modifier = Modifier.height(18.dp))
                             }

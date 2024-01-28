@@ -16,7 +16,7 @@ class GetGameByIdUseCase @Inject constructor(
 	operator fun invoke(gameId: Int): Flow<Resource<GameDetail>> = flow {
 		try {
 			emit(Resource.Loading())
-			val gameById = repository.getGameById(gameId).toGameDetail()
+			val gameById = repository.getGameById(gameId).toGames().first()
 			emit(Resource.Success(gameById))
 		} catch (e: HttpException){
 			emit(Resource.Error(e.localizedMessage ?: "An Error Occurred"))

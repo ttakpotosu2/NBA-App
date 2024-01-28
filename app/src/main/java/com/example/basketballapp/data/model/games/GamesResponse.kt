@@ -1,6 +1,6 @@
 package com.example.basketballapp.data.model.games
 
-import com.example.basketballapp.domain.model.Games
+import com.example.basketballapp.domain.model.GameDetail
 
 data class GamesResponse(
     val errors: List<Int>,
@@ -9,9 +9,7 @@ data class GamesResponse(
     val response: List<GameDetailResponse>,
     val results: Int
 ) {
-    fun toGames(): Games {
-        return Games(
-            response.map { it.toGameDetail() }
-        )
+    fun toGames(): List<GameDetail> {
+        return response.map { it.toGameDetail() }
     }
 }

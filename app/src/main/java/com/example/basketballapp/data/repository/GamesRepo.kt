@@ -12,19 +12,19 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class GamesRepo @Inject constructor(
-    private val api: NbaAppApi
-) {
-    fun getGames(season: String): Flow<PagingData<GameDetailResponse>> {
-        return Pager(
-            config = PagingConfig(10),
-            pagingSourceFactory = {
-                GamesPagingSource(api, season)
-            }
-        ).flow.flowOn(Dispatchers.IO)
-    }
-
-    suspend fun getGame(id: Int): GameDetail {
-        return api.getGame(id).toGameDetail()
-    }
-}
+//class GamesRepo @Inject constructor(
+//    private val api: NbaAppApi
+//) {
+//    fun getGames(season: String): Flow<PagingData<GameDetailResponse>> {
+//        return Pager(
+//            config = PagingConfig(10),
+//            pagingSourceFactory = {
+//                GamesPagingSource(api, season)
+//            }
+//        ).flow.flowOn(Dispatchers.IO)
+//    }
+//
+//    suspend fun getGame(id: Int): GameDetail {
+//        return api.getGame(id)
+//    }
+//}

@@ -22,14 +22,12 @@ class GamesViewModel @Inject constructor(
 		getGamesUseCase(date).onEach { result ->
 			when (result) {
 				is Resource.Success -> {
-					_state.value = GamesState(games = result.data)
+					_state.value = GamesState(games = result.data ?: emptyList())
 				}
-				
 				is Resource.Error -> {
 					_state.value =
 						GamesState(error = result.message ?: "An unexpected error occurred")
 				}
-				
 				is Resource.Loading -> {
 					_state.value = GamesState(isLoading = true)
 				}
@@ -37,18 +35,3 @@ class GamesViewModel @Inject constructor(
 		}.launchIn(viewModelScope)
 	}
 }
-
-//    private val _seasonQuery = mutableStateOf("2023")
-//    val seasonQuery = _seasonQuery
-//
-//    fun updateSeason(season: String) {
-//        _seasonQuery.value = season
-//    }
-//
-//
-//
-//    val games = snapshotFlow {
-//        _seasonQuery
-//    }.debounce(500L).flatMapLatest {
-//        repo.getGames(season = it.value).cachedIn(viewModelScope)
-//    }

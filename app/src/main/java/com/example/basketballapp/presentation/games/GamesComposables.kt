@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -33,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.SubcomposeAsyncImage
 import com.example.basketballapp.domain.model.GameDetail
 import com.example.basketballapp.presentation.ui.theme.Anton
+import com.valentinilk.shimmer.shimmer
 import java.time.LocalDate
 
 @Composable
@@ -314,5 +316,23 @@ fun DateRow(
 				)
 			}
 		}
+	}
+}
+
+
+@Composable
+fun GameDetailScreenShimmer() {
+	Box(
+		modifier = Modifier
+			.fillMaxSize()
+			.background(Color.DarkGray)
+			.shimmer(),
+		contentAlignment = Alignment.Center
+	) {
+		Box(
+			modifier = Modifier
+				.size(64.dp)
+				.background(Color.Red)
+		)
 	}
 }

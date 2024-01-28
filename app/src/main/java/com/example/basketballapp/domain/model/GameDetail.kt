@@ -14,7 +14,7 @@ data class GameDetail(
 	val leadChanges: Int,
 	val league: String?,
 	val nugget: String?,
-	val officials: List<String>?,
+	val officials: List<String>,
 	val periods: Periods?,
 	val scores: Scores?,
 	val season: Int,

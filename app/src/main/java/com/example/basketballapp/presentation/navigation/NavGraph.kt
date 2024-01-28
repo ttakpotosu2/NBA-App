@@ -11,6 +11,7 @@ import com.example.basketballapp.common.Constants
 import com.example.basketballapp.presentation.games.GameDetailScreen
 import com.example.basketballapp.presentation.games.GamesScreen
 import com.example.basketballapp.presentation.standings.StandingsScreen
+import com.example.basketballapp.presentation.statistics.GameStatScreen
 
 @Composable
 fun NavGraph(
@@ -20,31 +21,45 @@ fun NavGraph(
         navController = navHostController,
         startDestination = Screens.GamesScreen.route
     ) {
+        val arguments = listOf(navArgument(Constants.PARAM_GAME_ID) { type = NavType.IntType })
         navHostController.addOnDestinationChangedListener { _, destination, _ ->
-            Log.e(
+            Log.i(
                 "nav",
                 destination.route.toString()
             )
         }
+        //Games
         composable(
-            route = Screens.GamesScreen.route + "/{${Constants.PARAM_GAME_ID}}",
-            arguments = listOf(navArgument(Constants.PARAM_GAME_ID){
-                type = NavType.IntType
-            })
-        ){
-            val id = requireNotNull(it.arguments).getInt(Constants.PARAM_GAME_ID)
+            route = Screens.GamesScreen.route
+            ) {
             GamesScreen(
                 toGameDetailScreen = {
-                    navHostController.navigate(Screens.GameDetailScreen.route + "$id")
+                    navHostController.navigate(Screens.GameDetailScreen.navToGameDetailScreen(it))
                 },
                 navController = navHostController
             )
         }
-        composable(route = Screens.GameDetailScreen.route){
-            GameDetailScreen(navHostController)
+        composable(
+            route = Screens.GameDetailScreen.route,
+            arguments = arguments
+        ){
+            GameDetailScreen(
+                navController = navHostController,
+                toGameStatsScreen = {
+                    navHostController.navigate(Screens.GameStatsScreen.navToGameStatsScreen(it))
+                }
+            )
         }
+        //Standings
         composable(route = Screens.StandingsScreen.route){
             StandingsScreen(navHostController)
+        }
+        //Stats
+        composable(
+            route = Screens.GameStatsScreen.route,
+            arguments = arguments
+        ){
+            GameStatScreen(navController = navHostController)
         }
     }
 }

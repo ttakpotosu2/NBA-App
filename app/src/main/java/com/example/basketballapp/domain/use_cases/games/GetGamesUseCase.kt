@@ -1,7 +1,7 @@
 package com.example.basketballapp.domain.use_cases.games
 
 import com.example.basketballapp.common.Resource
-import com.example.basketballapp.domain.model.Games
+import com.example.basketballapp.domain.model.GameDetail
 import com.example.basketballapp.domain.repository.BasketballAppRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -12,7 +12,7 @@ class GetGamesUseCase @Inject constructor(
 	private val repository: BasketballAppRepository
 ) {
 	
-	operator fun invoke(date: String): Flow<Resource<Games>> = flow {
+	operator fun invoke(date: String): Flow<Resource<List<GameDetail>>> = flow {
 		try {
 			emit(Resource.Loading())
 			val games = repository.getGames(date).toGames()

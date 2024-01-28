@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.basketballapp.common.Constants
 import com.example.basketballapp.common.Resource
-import com.example.basketballapp.data.repository.GamesRepo
 import com.example.basketballapp.domain.use_cases.games.GetGameByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -19,7 +18,6 @@ import javax.inject.Inject
 @HiltViewModel
 class GameDetailViewModel @Inject constructor(
     private val getGameByIdUseCase: GetGameByIdUseCase,
-    private val repo: GamesRepo,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -45,18 +43,4 @@ class GameDetailViewModel @Inject constructor(
             }
         }.launchIn(viewModelScope)
     }
-    
-//    private val _game = mutableStateOf(GameDetailState(isLoading = true))
-//    val game: State<GameDetailState> = _game
-//
-//    init {
-//        savedStateHandle.get<Int>(Constants.PARAM_GAME_ID)?.let { gameById(it) }
-//    }
-//
-//    private fun gameById(gameId: Int){
-//        viewModelScope.launch{
-//            val result = repo.getGame(gameId)
-//            _game.value = GameDetailState(game = result)
-//        }
-//    }
 }
