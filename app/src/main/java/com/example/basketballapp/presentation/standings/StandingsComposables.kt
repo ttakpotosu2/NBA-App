@@ -1,13 +1,17 @@
 package com.example.basketballapp.presentation.standings
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -77,7 +81,8 @@ fun StandingsItem(
 
 @Composable
 fun StandingsHeading(
-
+	heading: String,
+	onHeadingClicked: () -> Unit
 ) {
 	Row(
 		verticalAlignment = Alignment.CenterVertically,
@@ -87,11 +92,18 @@ fun StandingsHeading(
 			.height(50.dp)
 			.padding(12.dp)
 	) {
-		Text(
-			text = "TEAMS",
-			color = Color.Black,
-			modifier = Modifier.weight(4f)
-		)
+		Row (
+			modifier = Modifier
+				.weight(4f)
+				.clickable { onHeadingClicked() },
+			verticalAlignment = Alignment.CenterVertically
+		){
+			Text(
+				text = heading,
+				color = Color.Black,
+			)
+			Icon(imageVector = Icons.Default.KeyboardArrowDown, contentDescription = null)
+		}
 		Text(
 			text = "W",
 			color = Color.Black,

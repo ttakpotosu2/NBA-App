@@ -32,11 +32,9 @@ class StandingsViewModel @Inject constructor(
 				is Resource.Success -> {
 					_state.value = StandingsState(standing = result.data)
 				}
-				
 				is Resource.Error -> {
 					_state.value = StandingsState(error = result.message ?: "An unexpected error occurred")
 				}
-				
 				is Resource.Loading -> {
 					_state.value = StandingsState(isLoading = true)
 				}

@@ -24,4 +24,19 @@ interface NbaAppApi {
         @Query("league") league: String,
         @Query("season") season: String
     ): StandingsResponse
+
+    @GET("standings/")
+    suspend fun getConferenceStandings(
+        @Query("league") league: String,
+        @Query("season") season: String,
+        @Query("conference") conference: String
+    ): StandingsResponse
+
+    @GET("standings/")
+    suspend fun getDivisionStandings(
+        @Query("league") league: String,
+        @Query("season") season: String,
+        @Query("division") division: String
+    ): StandingsResponse
 }
+

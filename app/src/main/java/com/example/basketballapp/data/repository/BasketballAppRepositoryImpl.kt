@@ -22,6 +22,22 @@ class BasketballAppRepositoryImpl @Inject constructor(
 		return api.getStandings(league, season)
 	}
 
+	override suspend fun getConferenceStandings(
+		league: String,
+		season: String,
+		conference: String
+	): StandingsResponse {
+		return api.getConferenceStandings(league, season, conference)
+	}
+
+	override suspend fun getDivisionStandings(
+		league: String,
+		season: String,
+		division: String
+	): StandingsResponse {
+		return api.getDivisionStandings(league, season, division)
+	}
+
 	override suspend fun getGameStats(gameId: Int): GameStatsResponse {
 		return api.getGameStats(gameId)
 	}

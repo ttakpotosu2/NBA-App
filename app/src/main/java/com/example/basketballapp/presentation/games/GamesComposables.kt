@@ -319,7 +319,6 @@ fun DateRow(
 	}
 }
 
-
 @Composable
 fun GameDetailScreenShimmer() {
 	Box(

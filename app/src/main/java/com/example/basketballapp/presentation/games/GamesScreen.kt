@@ -102,11 +102,9 @@ fun GamesScreen(
                         modifier = Modifier.padding(horizontal = 12.dp),
                         verticalArrangement = Arrangement.Top
                     ) {
-                        state.games?.let { games ->
-                            items(games) { game ->
-                                GamesListItem(games = game, onClick = {toGameDetailScreen(game.id)})
-                                Spacer(modifier = Modifier.height(18.dp))
-                            }
+                        items(state.games) { game ->
+                            GamesListItem(games = game, onClick = {toGameDetailScreen(game.id)})
+                            Spacer(modifier = Modifier.height(18.dp))
                         }
                     }
                 }

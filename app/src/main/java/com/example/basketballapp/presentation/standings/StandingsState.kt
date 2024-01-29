@@ -7,8 +7,10 @@ data class StandingsState(
 	val isLoading: Boolean = false,
 	val standing: Standings? = null,
 	val error: String = "",
-	var season: String = "2023",
-	var league: String = "standard"
+	val season: String = "2023",
+	val league: String = "standard",
+	val conference: String = "",
+	val division: String = ""
 )
 
 data class StandingDetailState(
