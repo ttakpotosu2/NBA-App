@@ -6,8 +6,7 @@
 3. RapidApi - API_NBA (https://rapidapi.com/api-sports/api/api-nba)
 4. Hilt
 5. Jetpack Compose
-6. ComposeSingleRowCalender Library
-7. Animated Navigation Bar Library
+6. Animated Navigation Bar Library
 
 # Screen shots of flow of screens for the  App. 
 Its is still in development and as such will be updated regularly.
