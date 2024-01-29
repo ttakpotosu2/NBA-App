@@ -11,5 +11,8 @@
 # Screen shots of flow of screens for the  App. 
 Its is still in development and as such will be updated regularly.
 
-![Screenshot_20240113_205842](https://github.com/ttakpotosu2/NBA-App/assets/105734117/68cb0ca7-f23d-41ac-8e1d-68cba3b355d7)
-![Screenshot_20240113_205745](https://github.com/ttakpotosu2/NBA-App/assets/105734117/7e65e12c-28f9-4be9-95da-4cf142eeb0f5)
+![Screenshot_20240129_202739](https://github.com/ttakpotosu2/NBA-App/assets/105734117/93efa509-87eb-4f51-94f2-c4452bd24e07)
+![Screenshot_20240129_202751](https://github.com/ttakpotosu2/NBA-App/assets/105734117/b7145a5b-0a70-4cdd-8df4-27d6b445ec3a)
+![Screenshot_20240129_202805](https://github.com/ttakpotosu2/NBA-App/assets/105734117/61df9fc0-9a26-49b8-bfbd-ac42e216f209)
+![Screenshot_20240129_202630](https://github.com/ttakpotosu2/NBA-App/assets/105734117/076cb788-a50c-4008-aa17-bc24bb65897b)
+![Screenshot_20240129_202650](https://github.com/ttakpotosu2/NBA-App/assets/105734117/4686fba4-f69a-4a33-8fd4-16405274ceb4)
