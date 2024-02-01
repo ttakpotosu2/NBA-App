@@ -121,7 +121,6 @@ fun GameStatScreen(
                                 fontSize = 40.sp,
                                 color = Color.White
                             )
-
                             Text(
                                 text = home.team.nickname,
                                 fontFamily = Anton,
@@ -173,36 +172,6 @@ fun GameStatScreen(
                             modifier = Modifier
                                 .verticalScroll(rememberScrollState())
                         ) {
-//                            StatsItem(
-//                                visitingStat = visitingStat.fastBreakPoints,
-//                                homeStat = homeStat.fastBreakPoints,
-//                                statName = "Fast Break Points"
-//                            )
-//                            StatsItem(
-//                                visitingStat = visitingStat.pointsInPaint,
-//                                homeStat = homeStat.pointsInPaint,
-//                                statName = "Points In Paint"
-//                            )
-//                            StatsItem(
-//                                visitingStat = visitingStat.biggestLead,
-//                                homeStat = homeStat.biggestLead,
-//                                statName = "Biggest Lead"
-//                            )
-//                            StatsItem(
-//                                visitingStat = visitingStat.secondChancePoints,
-//                                homeStat = homeStat.secondChancePoints,
-//                                statName = "Second Chance Points"
-//                            )
-//                            StatsItem(
-//                                visitingStat = visitingStat.pointsOffTurnovers,
-//                                homeStat = homeStat.pointsOffTurnovers,
-//                                statName = "Points Off Turnovers"
-//                            )
-//                            StatsItem(
-//                                visitingStat = visitingStat.longestRun,
-//                                homeStat = homeStat.longestRun,
-//                                statName = "Longest Run"
-//                            )
                             StatsItem(
                                 visitingStat = visitingStat.fieldGoalsMade,
                                 homeStat = homeStat.fieldGoalsMade,
@@ -213,11 +182,6 @@ fun GameStatScreen(
                                 homeStat = homeStat.fieldGoalAttempted,
                                 statName = "Field Goals Attempted"
                             )
-//                            StatsItem(
-//                                visitingStat = visitingStat.fieldGoalPercentage.toInt(),
-//                                homeStat = homeStat.fieldGoalPercentage.toInt(),
-//                                statName = "Field Goal Percentage"
-//                            )
                             StatsItem(
                                 visitingStat = visitingStat.freeThrowsMade,
                                 homeStat = homeStat.freeThrowsMade,
@@ -228,11 +192,6 @@ fun GameStatScreen(
                                 homeStat = homeStat.freeThrowsAttempted,
                                 statName = "Free Throws Attempted"
                             )
-//                        StatsItem(
-//                            visitingStat = visitingStat.freeThrowPercentage,
-//                            homeStat = homeStat.freeThrowPercentage,
-//                            statName = "Free Throws Percentage"
-//                        )
                             StatsItem(
                                 visitingStat = visitingStat.threePointsMade,
                                 homeStat = homeStat.threePointsMade,
@@ -248,11 +207,6 @@ fun GameStatScreen(
                                 homeStat = homeStat.fieldGoalAttempted,
                                 statName = "Field Goals Attempted"
                             )
-//                        StatsItem(
-//                            visitingStat = visitingStat.threePointsPercentage,
-//                            homeStat = homeStat.threePointsPercentage,
-//                            statName = "Three Pointers Percentage"
-//                        )
                             StatsItem(
                                 visitingStat = visitingStat.offensiveRebounds,
                                 homeStat = homeStat.offensiveRebounds,
@@ -293,16 +247,6 @@ fun GameStatScreen(
                                 homeStat = homeStat.blocks,
                                 statName = "Blocks"
                             )
-//                        StatsItem(
-//                            visitingStat = visitingStat.min,
-//                            homeStat = homeStat.min,
-//                            statName = "Minutes"
-//                        )
-//                        StatsItem(
-//                            visitingStat = visitingStat.plusMinus,
-//                            homeStat = homeStat.plusMinus,
-//                            statName = "Plus Minus"
-//                        )
                         }
                         Spacer(modifier = Modifier.height(16.dp))
                     }

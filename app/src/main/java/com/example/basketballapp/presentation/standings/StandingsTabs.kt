@@ -52,27 +52,25 @@ fun ConferenceStandings(
     }
 
     Column {
-        Column {
-            val sortedStandings = state.standing?.response?.sortedByDescending { it.win.percentage }
+        val sortedStandings = state.standing?.response?.sortedByDescending { it.win.percentage }
 
-            StandingsHeading(
-                heading = selectedConference.uppercase(),
-                onHeadingClicked = {
-                    viewModel.getConferenceStandings(
-                        conference = conference[if (confIndex == 0) 1 else 0],
-                        season = state.season,
-                        league = state.league
+        StandingsHeading(
+            heading = selectedConference.uppercase(),
+            onHeadingClicked = {
+                viewModel.getConferenceStandings(
+                    conference = conference[if (confIndex == 0) 1 else 0],
+                    season = state.season,
+                    league = state.league
+                )
+            })
+        LazyColumn {
+            sortedStandings?.let { standings ->
+                items(standings) { standingDetail ->
+                    StandingsItem(
+                        standings = standingDetail,
+                        rank = "${sortedStandings.indexOf(standingDetail) + 1}"
                     )
-                })
-            LazyColumn {
-                sortedStandings?.let { standings ->
-                    items(standings) { standingDetail ->
-                        StandingsItem(
-                            standings = standingDetail,
-                            rank = "${sortedStandings.indexOf(standingDetail) + 1}"
-                        )
-                        Divider()
-                    }
+                    Divider()
                 }
             }
         }
