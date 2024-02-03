@@ -7,12 +7,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -183,11 +187,11 @@ fun GamesListItem(
 							"In Play" -> {
 								Color.Green
 							}
-							
+
 							"Finished" -> {
 								Color.Gray
 							}
-							
+
 							else -> {
 								Color.Red
 							}
@@ -321,17 +325,33 @@ fun DateRow(
 
 @Composable
 fun GameDetailScreenShimmer() {
-	Box(
+	Column(
 		modifier = Modifier
 			.fillMaxSize()
-			.background(Color.DarkGray)
 			.shimmer(),
-		contentAlignment = Alignment.Center
+		verticalArrangement = Arrangement.Center,
+		horizontalAlignment = Alignment.CenterHorizontally
 	) {
-		Box(
-			modifier = Modifier
-				.size(64.dp)
-				.background(Color.Red)
-		)
+		CircularProgressIndicator(modifier = Modifier.size(50.dp))
+	}
+}
+
+@Composable
+fun GamesPerTeamTab(
+	viewModel: GamesPerTeamViewModel,
+	onItemClicked:(Int) -> Unit
+) {
+	val state = viewModel.state.value
+	Column{
+		Spacer(modifier = Modifier.height(16.dp))
+		LazyColumn(
+			modifier = Modifier.padding(horizontal = 12.dp),
+			verticalArrangement = Arrangement.Top
+		) {
+			items(state.games) { game ->
+				GamesListItem(games = game, onClick = {onItemClicked(game.id)})
+				Spacer(modifier = Modifier.height(18.dp))
+			}
+		}
 	}
 }

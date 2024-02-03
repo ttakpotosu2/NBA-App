@@ -1,10 +1,6 @@
 package com.example.basketballapp.presentation.navigation
 
 import android.util.Log
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -16,6 +12,7 @@ import com.example.basketballapp.presentation.games.GameDetailScreen
 import com.example.basketballapp.presentation.games.GamesScreen
 import com.example.basketballapp.presentation.standings.StandingsScreen
 import com.example.basketballapp.presentation.statistics.GameStatScreen
+import com.example.basketballapp.presentation.teams.TeamDetailScreen
 
 @Composable
 fun NavGraph(
@@ -24,20 +21,20 @@ fun NavGraph(
     NavHost(
         navController = navHostController,
         startDestination = Screens.GamesScreen.route,
-        enterTransition = {
-            slideInHorizontally (
-                animationSpec = tween(
-                    300, easing = LinearEasing
-                )
-            )
-        },
-        exitTransition = {
-            slideOutHorizontally(
-                animationSpec = tween(
-                    300, easing = LinearEasing
-                )
-            )
-        }
+//        enterTransition = {
+//            slideInHorizontally (
+//                animationSpec = tween(
+//                    300, easing = LinearEasing
+//                )
+//            )
+//        },
+//        exitTransition = {
+//            slideOutHorizontally(
+//                animationSpec = tween(
+//                    300, easing = LinearEasing
+//                )
+//            )
+//        }
     ) {
         val arguments = listOf(navArgument(Constants.PARAM_GAME_ID) { type = NavType.IntType })
         navHostController.addOnDestinationChangedListener { _, destination, _ ->
@@ -66,19 +63,33 @@ fun NavGraph(
                 toGameStatsScreen = {
                     navHostController.navigate(Screens.GameStatsScreen.navToGameStatsScreen(it))
                 },
-                toTeamDetailScreen = {}
+                toTeamDetailScreen = {
+                    navHostController.navigate(Screens.TeamDetailScreen.navToTeamDetailScreen(it))
+                }
             )
         }
+
         //Standings
         composable(route = Screens.StandingsScreen.route){
             StandingsScreen(navHostController)
         }
+
         //Stats
-        composable(
-            route = Screens.GameStatsScreen.route,
-            arguments = arguments
-        ){
+        composable(route = Screens.GameStatsScreen.route, arguments = arguments){
             GameStatScreen(navController = navHostController)
+        }
+
+        //Teams
+        composable(
+            route = Screens.TeamDetailScreen.route,
+            arguments = listOf(navArgument(Constants.PARAM_TEAM_ID) { type = NavType.IntType })
+        ){
+            TeamDetailScreen(
+                navController = navHostController,
+                toGameDetailScreen = {
+                    navHostController.navigate(Screens.GameDetailScreen.navToGameDetailScreen(it))
+                }
+            )
         }
     }
 }

@@ -94,10 +94,12 @@ fun GamesScreen(
                 color = Color.White
             )
             DateRow(currentDate = today)
-            HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize()) {
-                Column (
-                    verticalArrangement = Arrangement.Top
-                ){
+            HorizontalPager(
+                state = pagerState,
+                modifier = Modifier.fillMaxSize(),
+                verticalAlignment = Alignment.Top
+            ) {
+                Column{
                     LazyColumn(
                         modifier = Modifier.padding(horizontal = 12.dp),
                         verticalArrangement = Arrangement.Top
