@@ -69,7 +69,7 @@ dependencies {
     implementation(platform("androidx.compose:compose-bom:2023.10.01"))
 
     implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.8.2")
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
@@ -82,7 +82,7 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-    implementation ("androidx.compose.material:material-icons-extended:1.5.4")
+    implementation ("androidx.compose.material:material-icons-extended:1.6.1")
 
     //Splashscreen
     implementation("androidx.core:core-splashscreen:1.1.0-alpha02")
@@ -94,13 +94,13 @@ dependencies {
     implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.12")
 
     // Compose Navigation
-    implementation("androidx.navigation:navigation-compose:2.7.6")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 
     // KotlinX Serialization
     implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
 
     //Paging 3.0
-    implementation ("androidx.paging:paging-compose:3.3.0-alpha02")
+    implementation ("androidx.paging:paging-compose:3.3.0-alpha03")
     implementation ("androidx.paging:paging-runtime-ktx:3.2.1")
 
     // Coil
@@ -117,6 +117,4 @@ dependencies {
     
     //Animated Bottom Bar
     implementation("com.exyte:animated-navigation-bar:1.0.0")
-    
-    implementation("io.github.ahmednader65:ComposeSingleRowCalender:1.0.1")
 }

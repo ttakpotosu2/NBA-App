@@ -71,5 +71,4 @@ object AppModule {
     fun provideRepo(api: NbaAppApi): BasketballAppRepository{
         return BasketballAppRepositoryImpl(api)
     }
-    
 }

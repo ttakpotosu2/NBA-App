@@ -70,4 +70,13 @@ interface NbaAppApi {
         @Query("id") teamId: Int,
         @Query("season") season: String
     ): GameStatsResponse
+
+    //playerPerId
+    //search
+    //stats per player per game
+    //stats per
+    //team stats
+    //players stats per game
+    //players stats per team
+
 }
