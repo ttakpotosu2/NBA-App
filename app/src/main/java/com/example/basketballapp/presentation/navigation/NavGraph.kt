@@ -26,9 +26,9 @@ fun NavGraph(
         enterTransition = { EnterTransition.None },
         exitTransition = { ExitTransition.None }
     ) {
-            navHostController.addOnDestinationChangedListener { _, destination, _ ->
-                Log.i("nav", destination.route.toString())
-            }
+        navHostController.addOnDestinationChangedListener { _, destination, _ ->
+            Log.i("nav", destination.route.toString())
+        }
 
         //Games
         composable(
@@ -57,8 +57,15 @@ fun NavGraph(
         }
 
         //Standings
-        composable(route = Screens.StandingsScreen.route) {
-            StandingsScreen(navHostController)
+        composable(
+            route = Screens.StandingsScreen.route
+        ) {
+            StandingsScreen(
+                navController = navHostController,
+                toTeamDetailScreen = {
+                    navHostController.navigate(Screens.TeamDetailScreen.navToTeamDetailScreen(it))
+                }
+            )
         }
 
         //Stats

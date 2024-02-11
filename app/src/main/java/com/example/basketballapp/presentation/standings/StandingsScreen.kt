@@ -38,8 +38,10 @@ import com.example.basketballapp.presentation.ui.theme.Anton
 fun StandingsScreen(
     navController: NavController,
     standingsViewModel: StandingsViewModel = hiltViewModel(),
-    conferenceStandingsViewModel: ConferenceStandingsViewModel = hiltViewModel(),
+    toTeamDetailScreen: (Int) -> Unit
 ) {
+    val state = standingsViewModel.state.value
+
     var tabIndex by remember { mutableIntStateOf(0) }
     val tabs = listOf("League", "Conference", "Division")
     val pagerState = rememberPagerState { tabs.size }
@@ -109,10 +111,18 @@ fun StandingsScreen(
             ) { index ->
                 when (index) {
                     0 -> {
-                        LeagueStandings(standingsViewModel = standingsViewModel)
+                        LeagueStandings(
+                            standingsViewModel = standingsViewModel,
+                            onStandingsItemClicked = {
+                                toTeamDetailScreen(it)
+                            }
+                        )
                     }
                     1 -> {
-                        ConferenceStandings(viewModel = conferenceStandingsViewModel)
+                        ConferenceStandings(
+                            viewModel = standingsViewModel,
+                            onStandingsItemClicked = {toTeamDetailScreen(it)}
+                        )
                     }
                     2 -> {
 

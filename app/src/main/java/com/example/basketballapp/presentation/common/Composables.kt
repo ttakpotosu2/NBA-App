@@ -16,26 +16,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -49,8 +39,8 @@ fun GamesCard(
 	gameDetailResponse: GameDetailResponse, onItemClick: () -> Unit
 ) {
 	val visitingTeamLogo =
-		rememberAsyncImagePainter(model = gameDetailResponse.teams?.visiting?.logo)
-	val homeTeamLogo = rememberAsyncImagePainter(model = gameDetailResponse.teams?.home?.logo)
+		rememberAsyncImagePainter(model = gameDetailResponse.teams.visiting.logo)
+	val homeTeamLogo = rememberAsyncImagePainter(model = gameDetailResponse.teams.home.logo)
 	
 	Column(
 		horizontalAlignment = Alignment.CenterHorizontally,
@@ -62,7 +52,7 @@ fun GamesCard(
 		//   .border(width = 1.dp, Color.White)
 	) {
 		Spacer(modifier = Modifier.height(12.dp))
-		gameDetailResponse.date?.start?.let {
+		gameDetailResponse.date.start.let {
 			Text(
 				text = it.substring(0, 10),
 				modifier = Modifier
@@ -83,7 +73,7 @@ fun GamesCard(
 		) {
 			Image(
 				painter = visitingTeamLogo,
-				contentDescription = gameDetailResponse.teams?.visiting?.nickname,
+				contentDescription = gameDetailResponse.teams.visiting.nickname,
 				modifier = Modifier
 					.size(100.dp)
 					.fillMaxWidth(),
@@ -94,7 +84,7 @@ fun GamesCard(
 			)
 			Image(
 				painter = homeTeamLogo,
-				contentDescription = gameDetailResponse.teams?.home?.nickname,
+				contentDescription = gameDetailResponse.teams.home.nickname,
 				modifier = Modifier
 					.size(100.dp)
 					.fillMaxWidth(),
@@ -113,7 +103,7 @@ fun GamesCard(
 					.background(Color.White.copy(.1f))
 			)
 			Text(
-				text = "${gameDetailResponse.scores?.visitors?.points} - ${gameDetailResponse.scores?.home?.points}",
+				text = "${gameDetailResponse.scores.visitors.points} - ${gameDetailResponse.scores.home.points}",
 				fontFamily = JomhuriaRegular,
 				fontSize = 80.sp,
 				color = Color.White
@@ -122,14 +112,14 @@ fun GamesCard(
 		
 		// Spacer(modifier = Modifier.weight(1f))
 		Text(
-			text = "${gameDetailResponse.arena?.name}, ${gameDetailResponse.arena?.city}",
+			text = "${gameDetailResponse.arena.name}, ${gameDetailResponse.arena.city}",
 			fontFamily = JomhuriaRegular,
 			fontSize = 40.sp,
 			color = Color.White
 		)
 		//  Text(text = gamesResponse.arena.country ?: "To be Determined")
 		Text(
-			text = (gameDetailResponse.date?.start?.substring(11, 16) ?: "00:00") + "HRS",
+			text = gameDetailResponse.date.start.substring(11, 16) + "HRS",
 			fontFamily = JomhuriaRegular,
 			fontSize = 40.sp,
 			color = Color.White
@@ -149,7 +139,7 @@ fun JerseyCanvas(
 	Box(
 		contentAlignment = Alignment.Center
 	){
-		Canvas(modifier = Modifier.fillMaxSize()) {
+		Canvas(modifier = modifier.fillMaxSize()) {
 			val height = size.height
 			val width = size.width
 			

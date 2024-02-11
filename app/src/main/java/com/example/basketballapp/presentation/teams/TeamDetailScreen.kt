@@ -37,10 +37,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import com.example.basketballapp.presentation.games.GamesPerTeamTab
-import com.example.basketballapp.presentation.games.GamesPerTeamViewModel
 import com.example.basketballapp.presentation.navigation.NavBar
 import com.example.basketballapp.presentation.players.PlayersPerTeamTab
-import com.example.basketballapp.presentation.players.PlayersViewModel
 import com.example.basketballapp.presentation.ui.theme.Anton
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -48,8 +46,6 @@ import com.example.basketballapp.presentation.ui.theme.Anton
 fun TeamDetailScreen(
     navController: NavController,
     viewModel: TeamsViewModel = hiltViewModel(),
-    gamesPerTeamViewModel: GamesPerTeamViewModel = hiltViewModel(),
-    playersPerTeamViewModel: PlayersViewModel = hiltViewModel(),
     toGameDetailScreen: (Int) -> Unit
 ) {
     val state = viewModel.state.value
@@ -83,7 +79,7 @@ fun TeamDetailScreen(
                     color = Color.White
                 )
         ) {
-            if (state.team.isNotEmpty()) {
+            if (state.teams.isNotEmpty()) {
                 Column(
                     modifier = Modifier.padding(16.dp)
                 ) {
@@ -91,7 +87,7 @@ fun TeamDetailScreen(
                         horizontalArrangement = Arrangement.spacedBy(24.dp)
                     ) {
                         SubcomposeAsyncImage(
-                            model = state.team.first().logo,
+                            model = state.teams.first().logo,
                             loading = { CircularProgressIndicator(color = Color.White) },
                             contentDescription = null,
                             contentScale = ContentScale.Inside,
@@ -101,22 +97,22 @@ fun TeamDetailScreen(
                         )
                         Column {
                             Text(
-                                text = state.team.first().name,
+                                text = state.teams.first().name,
                                 fontFamily = Anton,
                                 fontSize = 30.sp,
                                 color = Color.White
 
                             )
                             Text(
-                                text = state.team.first().code,
+                                text = state.teams.first().code,
                                 fontFamily = Anton,
                                 fontSize = 20.sp,
                                 color = Color.White
 
                             )
                             Text(
-                                text = "${state.team.first().leagues.standard.conference}ern Conference |" +
-                                        " ${state.team.first().leagues.standard.division} Division",
+                                text = "${state.teams.first().leagues.standard.conference}ern Conference |" +
+                                        " ${state.teams.first().leagues.standard.division} Division",
                                 fontSize = 12.sp,
                                 color = Color.White
                             )
@@ -152,13 +148,13 @@ fun TeamDetailScreen(
                             0 -> {
                                 GamesPerTeamTab(
                                     onItemClicked = { toGameDetailScreen(it) },
-                                    viewModel = gamesPerTeamViewModel
+                                    viewModel = viewModel
                                 )
                             }
 
                             1 -> {
                                 PlayersPerTeamTab(
-                                    viewModel = playersPerTeamViewModel,
+                                    viewModel = viewModel,
                                     onItemClicked = {})
                             }
 

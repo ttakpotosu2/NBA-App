@@ -1,6 +1,6 @@
 package com.example.basketballapp.data.model.standings
 
-import com.example.basketballapp.domain.model.Standings
+import com.example.basketballapp.domain.model.StandingDetail
 
 data class StandingsResponse(
     val errors: List<Int>,
@@ -8,10 +8,8 @@ data class StandingsResponse(
     val parameters: Parameters,
     val response: List<StandingDetailResponse>,
     val results: Int
-){
- fun toStandings(): Standings{
-     return Standings(
-         response.map { it.toStandingDetail() }
-     )
- }
+) {
+    fun toStandings(): List<StandingDetail> {
+        return response.map { it.toStandingDetail() }
+    }
 }

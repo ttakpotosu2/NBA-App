@@ -15,7 +15,7 @@ data class StandingDetail(
 	val season: Int,
 	val streak: Int,
 	val team: Team,
-	val tieBreakerPoints: Int,
+	val tieBreakerPoints: Int?,
 	val win: Win,
 	val winStreak: Boolean
 )

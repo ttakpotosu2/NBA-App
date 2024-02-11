@@ -48,11 +48,11 @@ import com.example.basketballapp.presentation.ui.theme.Anton
 @Composable
 fun GameDetailScreen(
     navController: NavController,
-    viewModel: GameDetailViewModel = hiltViewModel(),
+    viewModel: GameDetailScreenViewModel = hiltViewModel(),
     toGameStatsScreen: (Int) -> Unit,
     toTeamDetailScreen: (Int) -> Unit
 ) {
-    val state = viewModel.state.value
+    val state = viewModel.gamesState.value
 
     Scaffold(
         bottomBar = { NavBar(navController) }

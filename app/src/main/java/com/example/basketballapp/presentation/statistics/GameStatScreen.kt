@@ -41,7 +41,7 @@ import com.example.basketballapp.presentation.ui.theme.Anton
 @Composable
 fun GameStatScreen(
     navController: NavController,
-    viewModel: GameStatsViewModel = hiltViewModel(),
+    viewModel: GameStatsScreenViewModel = hiltViewModel(),
     //onNavItemClicked: () -> Unit
 ) {
     val state = viewModel.state.value
@@ -62,9 +62,9 @@ fun GameStatScreen(
                     color = Color.White
                 )
         ) {
-            if (state.stat.isNotEmpty()) {
-                val visiting = state.stat.last()
-                val home = state.stat.first()
+            if (state.stats.isNotEmpty()) {
+                val visiting = state.stats.last()
+                val home = state.stats.first()
                 val visitingStat = visiting.statistics.last()
                 val homeStat = home.statistics.first()
                 Box(

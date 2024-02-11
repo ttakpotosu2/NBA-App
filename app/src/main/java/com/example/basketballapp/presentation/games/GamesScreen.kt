@@ -40,10 +40,10 @@ import java.time.LocalDate
 @Composable
 fun GamesScreen(
     navController: NavController,
-    gamesViewModel: GamesViewModel = hiltViewModel(),
+    gamesScreenViewModel: GamesScreenViewModel = hiltViewModel(),
     toGameDetailScreen: (Int) -> Unit
 ) {
-    val state = gamesViewModel.state.value
+    val state = gamesScreenViewModel.gamesState.value
     
     var today = LocalDate.now()
    
@@ -61,7 +61,7 @@ fun GamesScreen(
     LaunchedEffect(pagerState) {
         snapshotFlow { pagerState.currentPage }.collect { page ->
             today = dateList[page]
-            gamesViewModel.getGames(dateList[page].toString())
+            gamesScreenViewModel.getGames(dateList[page].toString())
         }
     }
     

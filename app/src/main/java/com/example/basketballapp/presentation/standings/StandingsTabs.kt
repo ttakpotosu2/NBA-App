@@ -3,29 +3,37 @@ package com.example.basketballapp.presentation.standings
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
 
 
 @Composable
 fun LeagueStandings(
-    standingsViewModel: StandingsViewModel
+    standingsViewModel: StandingsViewModel,
+    onStandingsItemClicked: (Int) -> Unit
 ) {
     val state = standingsViewModel.state.value
+
+    LaunchedEffect(Unit) {
+        standingsViewModel.getStandings(
+            season = state.season,
+            league = state.league
+        )
+    }
+
     Column {
-        val sortedStandings = state.standing?.response?.sortedByDescending { it.win.percentage }
-        StandingsHeading("TEAMS", onHeadingClicked = {})
+        val sortedStandings = state.standing.sortedByDescending { it.win.percentage }
+        StandingsHeading("TEAMS")
         LazyColumn {
-            sortedStandings?.let { standings ->
-                items(standings) { standingDetail ->
-                    StandingsItem(
-                        standings = standingDetail,
-                        rank = "${sortedStandings.indexOf(standingDetail) + 1}"
-                    )
+            items(sortedStandings) { standingDetail ->
+                StandingsItem(
+                    standings = standingDetail,
+                    rank = "${sortedStandings.indexOf(standingDetail) + 1}",
+                    onStandingsItemClicked = { onStandingsItemClicked(standingDetail.team.id) }
+                )
+                if(sortedStandings.indexOf(standingDetail) < sortedStandings.size){
                     Divider()
                 }
             }
@@ -35,42 +43,35 @@ fun LeagueStandings(
 
 @Composable
 fun ConferenceStandings(
-    viewModel: ConferenceStandingsViewModel
+    viewModel: StandingsViewModel,
+    onStandingsItemClicked: (Int) -> Unit
 ) {
     val state = viewModel.state.value
     val conference = listOf("east", "west")
-    val confIndex by remember { mutableIntStateOf(0) }
-
-    val selectedConference = conference[confIndex]
-
-    LaunchedEffect(selectedConference) {
-        viewModel.getConferenceStandings(
-            conference = conference[confIndex],
-            season = state.season,
-            league = state.league
-        )
-    }
 
     Column {
-        val sortedStandings = state.standing?.response?.sortedByDescending { it.win.percentage }
+        conference.forEach { conf ->
+            val sortedStandings = state.standing.sortedByDescending { it.win.percentage }
 
-        StandingsHeading(
-            heading = selectedConference.uppercase(),
-            onHeadingClicked = {
+            LaunchedEffect(conf) {
                 viewModel.getConferenceStandings(
-                    conference = conference[if (confIndex == 0) 1 else 0],
                     season = state.season,
-                    league = state.league
+                    league = state.league,
+                    conference = conf
                 )
-            })
-        LazyColumn {
-            sortedStandings?.let { standings ->
-                items(standings) { standingDetail ->
+            }
+
+            LazyColumn {
+                item { StandingsHeading(heading = conf.uppercase()) }
+                itemsIndexed(sortedStandings) { index, standingDetail ->
                     StandingsItem(
                         standings = standingDetail,
-                        rank = "${sortedStandings.indexOf(standingDetail) + 1}"
+                        rank = "${sortedStandings.indexOf(standingDetail) + 1}",
+                        onStandingsItemClicked = { onStandingsItemClicked(standingDetail.team.id) }
                     )
-                    Divider()
+                    if (index < sortedStandings.size) {
+                        Divider()
+                    }
                 }
             }
         }

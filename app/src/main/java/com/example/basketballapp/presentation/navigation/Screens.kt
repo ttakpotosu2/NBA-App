@@ -10,7 +10,9 @@ sealed class Screens(val route: String) {
         fun navToGameDetailScreen(id: Int): String{ return "game_detail_screen/$id" }
     }
     
-    object StandingsScreen: Screens(route = "standings_screen")
+    object StandingsScreen: Screens(route = "standings_screen"){
+
+    }
 
     object GameStatsScreen: Screens(route = "game_stats_screen/{${Constants.PARAM_GAME_ID}}"){
         fun navToGameStatsScreen(id: Int): String { return "game_stats_screen/$id" }

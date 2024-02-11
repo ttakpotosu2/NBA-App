@@ -20,9 +20,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowLeft
+import androidx.compose.material.icons.automirrored.filled.ArrowRight
 import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.ArrowLeft
-import androidx.compose.material.icons.filled.ArrowRight
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.SubcomposeAsyncImage
 import com.example.basketballapp.domain.model.GameDetail
+import com.example.basketballapp.presentation.teams.TeamsViewModel
 import com.example.basketballapp.presentation.ui.theme.Anton
 import com.valentinilk.shimmer.shimmer
 import java.time.LocalDate
@@ -106,9 +107,9 @@ fun GamesListItem(
 					if (visiting != null) {
 						Icon(
 							imageVector = if (visiting > home!!) {
-								Icons.Default.ArrowLeft
+								Icons.AutoMirrored.Filled.ArrowLeft
 							} else if (visiting < home) {
-								Icons.Default.ArrowRight
+								Icons.AutoMirrored.Filled.ArrowRight
 							} else {
 								Icons.Default.ArrowDropDown
 							},
@@ -338,7 +339,7 @@ fun GameDetailScreenShimmer() {
 
 @Composable
 fun GamesPerTeamTab(
-	viewModel: GamesPerTeamViewModel,
+	viewModel: TeamsViewModel,
 	onItemClicked:(Int) -> Unit
 ) {
 	val state = viewModel.state.value

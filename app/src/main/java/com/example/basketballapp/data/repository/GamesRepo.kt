@@ -1,30 +1,26 @@
 package com.example.basketballapp.data.repository
 
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import com.example.basketballapp.data.model.games.GameDetailResponse
+import com.example.basketballapp.data.model.games.GamesResponse
+import com.example.basketballapp.data.model.stats.GameStatsResponse
 import com.example.basketballapp.data.remote.NbaAppApi
-import com.example.basketballapp.domain.model.GameDetail
-import com.example.basketballapp.presentation.paging.GamesPagingSource
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-//class GamesRepo @Inject constructor(
-//    private val api: NbaAppApi
-//) {
-//    fun getGames(season: String): Flow<PagingData<GameDetailResponse>> {
-//        return Pager(
-//            config = PagingConfig(10),
-//            pagingSourceFactory = {
-//                GamesPagingSource(api, season)
-//            }
-//        ).flow.flowOn(Dispatchers.IO)
-//    }
-//
-//    suspend fun getGame(id: Int): GameDetail {
-//        return api.getGame(id)
-//    }
-//}
+class GamesRepo @Inject constructor(
+    private val api: NbaAppApi
+) {
+    suspend fun getGames(date: String): GamesResponse {
+        return api.getGames(date)
+    }
+
+    suspend fun getGameById(gameId: Int): GamesResponse {
+        return api.getGame(gameId)
+    }
+
+    suspend fun getGamesPerTeam(teamId: Int, season: String): GamesResponse {
+        return api.getGamesPerTeam(teamId, season)
+    }
+
+    suspend fun getGameStats(gameId: Int): GameStatsResponse {
+        return api.getGameStats(gameId)
+    }
+}

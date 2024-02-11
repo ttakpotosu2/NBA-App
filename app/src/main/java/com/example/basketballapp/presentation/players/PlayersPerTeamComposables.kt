@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.basketballapp.domain.model.PlayerDetail
+import com.example.basketballapp.presentation.teams.TeamsViewModel
 import com.example.basketballapp.presentation.ui.theme.Anton
 
 @Composable
@@ -65,7 +66,7 @@ fun PlayerItem(
 
 @Composable
 fun PlayersPerTeamTab(
-    viewModel: PlayersViewModel,
+    viewModel: TeamsViewModel,
     onItemClicked: (Int) -> Unit
 ) {
     val state = viewModel.state.value
@@ -76,7 +77,7 @@ fun PlayersPerTeamTab(
         LazyColumn(
             verticalArrangement = Arrangement.Top
         ) {
-            items(state.player) { player ->
+            items(state.players) { player ->
                 PlayerItem(player = player, onItemClicked = { onItemClicked(player.id) })
                 Spacer(modifier = Modifier.height(16.dp))
             }
