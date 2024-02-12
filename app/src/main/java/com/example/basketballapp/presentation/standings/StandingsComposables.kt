@@ -49,7 +49,6 @@ fun StandingsItem(
             )
             Text(text = standings.team.code, color = Color.White)
         }
-
         Text(
             text = "${standings.win.total}",
             color = Color.White,

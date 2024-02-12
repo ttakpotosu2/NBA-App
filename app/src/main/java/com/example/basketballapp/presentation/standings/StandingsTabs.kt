@@ -33,7 +33,7 @@ fun LeagueStandings(
                     rank = "${sortedStandings.indexOf(standingDetail) + 1}",
                     onStandingsItemClicked = { onStandingsItemClicked(standingDetail.team.id) }
                 )
-                if(sortedStandings.indexOf(standingDetail) < sortedStandings.size){
+                if (sortedStandings.indexOf(standingDetail) < sortedStandings.size) {
                     Divider()
                 }
             }
@@ -47,11 +47,10 @@ fun ConferenceStandings(
     onStandingsItemClicked: (Int) -> Unit
 ) {
     val state = viewModel.state.value
-    val conference = listOf("east", "west")
+    val conference = listOf("west", "east")
 
     Column {
         conference.forEach { conf ->
-            val sortedStandings = state.standing.sortedByDescending { it.win.percentage }
 
             LaunchedEffect(conf) {
                 viewModel.getConferenceStandings(
@@ -60,7 +59,7 @@ fun ConferenceStandings(
                     conference = conf
                 )
             }
-
+            val sortedStandings = state.standing.sortedByDescending { it.win.percentage }
             LazyColumn {
                 item { StandingsHeading(heading = conf.uppercase()) }
                 itemsIndexed(sortedStandings) { index, standingDetail ->
@@ -69,9 +68,7 @@ fun ConferenceStandings(
                         rank = "${sortedStandings.indexOf(standingDetail) + 1}",
                         onStandingsItemClicked = { onStandingsItemClicked(standingDetail.team.id) }
                     )
-                    if (index < sortedStandings.size) {
-                        Divider()
-                    }
+                    if (index < sortedStandings.size) { Divider() }
                 }
             }
         }
