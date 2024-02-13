@@ -121,11 +121,18 @@ fun StandingsScreen(
                     1 -> {
                         ConferenceStandings(
                             viewModel = standingsViewModel,
-                            onStandingsItemClicked = {toTeamDetailScreen(it)}
+                            onStandingsItemClicked = {
+                                toTeamDetailScreen(it)
+                            }
                         )
                     }
                     2 -> {
-
+                        DivisionsStandings(
+                            viewModel = standingsViewModel,
+                            onStandingsItemClicked = {
+                                toTeamDetailScreen(it)
+                            }
+                        )
                     }
                 }
             }

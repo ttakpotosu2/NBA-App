@@ -2,8 +2,6 @@ package com.example.basketballapp.data.repository
 
 import com.example.basketballapp.data.model.standings.StandingsResponse
 import com.example.basketballapp.data.remote.NbaAppApi
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class StandingsRepo @Inject constructor(
@@ -16,13 +14,12 @@ class StandingsRepo @Inject constructor(
         return api.getStandings(league, season)
     }
 
-    fun getConferenceStandings(
+    suspend fun getConferenceStandings(
         league: String,
         season: String,
         conference: String
-    ): Flow<StandingsResponse> = flow {
-        val response = api.getConferenceStandings(league, season, conference)
-        emit(response)
+    ): StandingsResponse {
+        return api.getConferenceStandings(league, season, conference)
     }
 
     suspend fun getDivisionStandings(
