@@ -1,6 +1,6 @@
 package com.example.basketballapp.presentation.standings
 
-import com.example.basketballapp.domain.model.StandingDetail
+import com.example.basketballapp.data.model.StandingDetail
 
 data class StandingsState(
     val isLoading: Boolean = false,

@@ -1,6 +1,6 @@
 package com.example.basketballapp.presentation.statistics
 
-import com.example.basketballapp.domain.model.GameStatsDetail
+import com.example.basketballapp.data.model.GameStatsDetail
 
 data class GameStatsState(
     val isLoading: Boolean = false,

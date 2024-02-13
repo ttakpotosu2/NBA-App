@@ -1,6 +1,6 @@
 package com.example.basketballapp.data.model.players
 
-import com.example.basketballapp.domain.model.PlayerDetail
+import com.example.basketballapp.data.model.PlayerDetail
 
 data class PlayerDetailsResponse(
     val affiliation: String,

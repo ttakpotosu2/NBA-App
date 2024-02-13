@@ -112,7 +112,7 @@ fun StandingsScreen(
                 when (index) {
                     0 -> {
                         LeagueStandings(
-                            standingsViewModel = standingsViewModel,
+                            viewModel = standingsViewModel,
                             onStandingsItemClicked = {
                                 toTeamDetailScreen(it)
                             }

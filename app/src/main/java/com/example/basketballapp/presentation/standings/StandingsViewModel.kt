@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.basketballapp.data.repository.StandingsRepo
-import com.example.basketballapp.domain.model.StandingDetail
+import com.example.basketballapp.data.model.StandingDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

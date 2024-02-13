@@ -1,6 +1,6 @@
 package com.example.basketballapp.data.model.stats
 
-import com.example.basketballapp.domain.model.GameStatsDetail
+import com.example.basketballapp.data.model.GameStatsDetail
 
 data class GameStatsResponse(
 	val errors: List<Int>,

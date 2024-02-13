@@ -7,16 +7,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.basketballapp.common.Constants
 import com.example.basketballapp.data.repository.GamesRepo
-import com.example.basketballapp.domain.use_cases.games.GetGameByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@OptIn(ExperimentalCoroutinesApi::class)
 @HiltViewModel
 class GameDetailScreenViewModel @Inject constructor(
-    private val getGameByIdUseCase: GetGameByIdUseCase,
+
     private val gamesRepo: GamesRepo,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {

@@ -36,7 +36,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.SubcomposeAsyncImage
-import com.example.basketballapp.domain.model.GameDetail
+import com.example.basketballapp.data.model.GameDetail
 import com.example.basketballapp.presentation.teams.TeamsViewModel
 import com.example.basketballapp.presentation.ui.theme.Anton
 import com.valentinilk.shimmer.shimmer
@@ -44,9 +44,9 @@ import java.time.LocalDate
 
 @Composable
 fun GamesListItem(
-	games: GameDetail,
-	onClick: (Int) -> Unit,
-	modifier: Modifier = Modifier
+    games: GameDetail,
+    onClick: (Int) -> Unit,
+    modifier: Modifier = Modifier
 ) {
 	Box(
 		modifier = modifier

@@ -11,13 +11,13 @@ import androidx.compose.runtime.LaunchedEffect
 
 @Composable
 fun LeagueStandings(
-    standingsViewModel: StandingsViewModel,
+    viewModel: StandingsViewModel,
     onStandingsItemClicked: (Int) -> Unit
 ) {
-    val state = standingsViewModel.state.value
+    val state = viewModel.state.value
 
     LaunchedEffect(Unit) {
-        standingsViewModel.getStandings(
+        viewModel.getStandings(
             season = state.season,
             league = state.league
         )

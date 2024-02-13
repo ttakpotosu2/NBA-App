@@ -1,10 +1,10 @@
 package com.example.basketballapp.presentation.teams
 
-import com.example.basketballapp.domain.model.GameDetail
-import com.example.basketballapp.domain.model.GameStatsDetail
-import com.example.basketballapp.domain.model.PlayerDetail
-import com.example.basketballapp.domain.model.StandingDetail
-import com.example.basketballapp.domain.model.TeamDetail
+import com.example.basketballapp.data.model.GameDetail
+import com.example.basketballapp.data.model.GameStatsDetail
+import com.example.basketballapp.data.model.PlayerDetail
+import com.example.basketballapp.data.model.StandingDetail
+import com.example.basketballapp.data.model.TeamDetail
 
 data class TeamsState(
     val isLoading: Boolean = false,

@@ -1,4 +1,4 @@
-package com.example.basketballapp.domain.model
+package com.example.basketballapp.data.model
 
 import com.example.basketballapp.data.model.players.Birth
 import com.example.basketballapp.data.model.players.Height

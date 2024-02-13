@@ -17,7 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
-import com.example.basketballapp.domain.model.StandingDetail
+import com.example.basketballapp.data.model.StandingDetail
 
 @Composable
 fun StandingsItem(
