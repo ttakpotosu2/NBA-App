@@ -172,77 +172,77 @@ fun GameStatScreen(
                             modifier = Modifier
                                 .verticalScroll(rememberScrollState())
                         ) {
-                            StatsItem(
+                            StatsPerGameItem(
                                 visitingStat = visitingStat.fieldGoalsMade,
                                 homeStat = homeStat.fieldGoalsMade,
                                 statName = "Field Goals Made"
                             )
-                            StatsItem(
+                            StatsPerGameItem(
                                 visitingStat = visitingStat.fieldGoalAttempted,
                                 homeStat = homeStat.fieldGoalAttempted,
                                 statName = "Field Goals Attempted"
                             )
-                            StatsItem(
+                            StatsPerGameItem(
                                 visitingStat = visitingStat.freeThrowsMade,
                                 homeStat = homeStat.freeThrowsMade,
                                 statName = "Free Throws Made"
                             )
-                            StatsItem(
+                            StatsPerGameItem(
                                 visitingStat = visitingStat.freeThrowsAttempted,
                                 homeStat = homeStat.freeThrowsAttempted,
                                 statName = "Free Throws Attempted"
                             )
-                            StatsItem(
+                            StatsPerGameItem(
                                 visitingStat = visitingStat.threePointsMade,
                                 homeStat = homeStat.threePointsMade,
                                 statName = "Three Pointers Made"
                             )
-                            StatsItem(
+                            StatsPerGameItem(
                                 visitingStat = visitingStat.threePointsAttempted,
                                 homeStat = homeStat.threePointsAttempted,
                                 statName = "Three Pointers Attempted"
                             )
-                            StatsItem(
+                            StatsPerGameItem(
                                 visitingStat = visitingStat.fieldGoalAttempted,
                                 homeStat = homeStat.fieldGoalAttempted,
                                 statName = "Field Goals Attempted"
                             )
-                            StatsItem(
+                            StatsPerGameItem(
                                 visitingStat = visitingStat.offensiveRebounds,
                                 homeStat = homeStat.offensiveRebounds,
                                 statName = "Offensive Rebounds"
                             )
-                            StatsItem(
+                            StatsPerGameItem(
                                 visitingStat = visitingStat.defensiveRebounds,
                                 homeStat = homeStat.defensiveRebounds,
                                 statName = "Defensive Rebounds"
                             )
-                            StatsItem(
+                            StatsPerGameItem(
                                 visitingStat = visitingStat.totalRebounds,
                                 homeStat = homeStat.totalRebounds,
                                 statName = "Total Rebounds"
                             )
-                            StatsItem(
+                            StatsPerGameItem(
                                 visitingStat = visitingStat.assists,
                                 homeStat = homeStat.assists,
                                 statName = "Assists"
                             )
-                            StatsItem(
+                            StatsPerGameItem(
                                 visitingStat = visitingStat.personalFouls,
                                 homeStat = homeStat.personalFouls,
                                 statName = "Personal Fouls"
                             )
-                            StatsItem(
+                            StatsPerGameItem(
                                 visitingStat = visitingStat.steals,
                                 homeStat = homeStat.steals,
                                 statName = "Steals"
                             )
-                            StatsItem(
+                            StatsPerGameItem(
                                 visitingStat = visitingStat.turnovers,
                                 homeStat = homeStat.turnovers,
                                 statName = "Turn Overs"
                             )
-                            StatsItem(
+                            StatsPerGameItem(
                                 visitingStat = visitingStat.blocks,
                                 homeStat = homeStat.blocks,
                                 statName = "Blocks"

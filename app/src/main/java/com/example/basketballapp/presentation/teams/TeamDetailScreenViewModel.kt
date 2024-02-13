@@ -32,7 +32,7 @@ class TeamsViewModel @Inject constructor(
                 teams = repository.getTeamById(teamId).toTeams(),
                 games = repository.getGamesPerTeam(teamId, season).toGames(),
                 players = repository.getPlayersPerTeam(teamId, season).toPlayers(),
-                //stats = repository.getStatsPerTeam(teamId, season).toGameStats(),
+//                stats = repository.getStatsPerTeam(teamId, season).toTeamStats(),
                 //standings = repository.getStandingsPerTeam(teamId, season, league).toStandings()
             )
         }

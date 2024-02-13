@@ -4,6 +4,7 @@ import com.example.basketballapp.data.model.games.GamesResponse
 import com.example.basketballapp.data.model.players.PlayersResponse
 import com.example.basketballapp.data.model.standings.StandingsResponse
 import com.example.basketballapp.data.model.stats.GameStatsResponse
+import com.example.basketballapp.data.model.teams.TeamStatsResponse
 import com.example.basketballapp.data.model.teams.TeamsResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -69,7 +70,7 @@ interface NbaAppApi {
     suspend fun getStatsPerTeam(
         @Query("id") teamId: Int,
         @Query("season") season: String
-    ): GameStatsResponse
+    ): TeamStatsResponse
 
     //playerPerId
     //search

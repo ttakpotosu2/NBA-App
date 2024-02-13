@@ -3,7 +3,7 @@ package com.example.basketballapp.data.repository
 import com.example.basketballapp.data.model.games.GamesResponse
 import com.example.basketballapp.data.model.players.PlayersResponse
 import com.example.basketballapp.data.model.standings.StandingsResponse
-import com.example.basketballapp.data.model.stats.GameStatsResponse
+import com.example.basketballapp.data.model.teams.TeamStatsResponse
 import com.example.basketballapp.data.model.teams.TeamsResponse
 import com.example.basketballapp.data.remote.NbaAppApi
 import javax.inject.Inject
@@ -31,7 +31,7 @@ class TeamsRepo @Inject constructor(
         return api.getStandingsPerTeam(teamId, season, league)
     }
 
-    suspend fun getStatsPerTeam(teamId: Int, season: String): GameStatsResponse {
+    suspend fun getStatsPerTeam(teamId: Int, season: String): TeamStatsResponse {
         return api.getStatsPerTeam(teamId, season)
     }
 }

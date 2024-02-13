@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.sp
 import com.example.basketballapp.presentation.ui.theme.Anton
 
 @Composable
-fun StatsItem(
+fun StatsPerGameItem(
     visitingStat: Int,
     homeStat: Int,
     statName: String,
@@ -57,7 +57,6 @@ fun StatsItem(
                 modifier = Modifier
                     .height(30.dp)
                     .clip(RoundedCornerShape(6.dp))
-
             )
             Text(
                 text = statName,

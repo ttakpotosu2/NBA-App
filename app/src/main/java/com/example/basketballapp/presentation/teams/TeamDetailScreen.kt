@@ -151,17 +151,14 @@ fun TeamDetailScreen(
                                     viewModel = viewModel
                                 )
                             }
-
                             1 -> {
                                 PlayersPerTeamTab(
                                     viewModel = viewModel,
                                     onItemClicked = {})
                             }
-
                             2 -> {
 
                             }
-
                             3 -> {
 
                             }
