@@ -12,6 +12,7 @@ import androidx.navigation.navArgument
 import com.example.basketballapp.common.Constants
 import com.example.basketballapp.presentation.games.GameDetailScreen
 import com.example.basketballapp.presentation.games.GamesScreen
+import com.example.basketballapp.presentation.players.PlayerDetailScreen
 import com.example.basketballapp.presentation.standings.StandingsScreen
 import com.example.basketballapp.presentation.statistics.GameStatScreen
 import com.example.basketballapp.presentation.teams.TeamDetailScreen
@@ -85,8 +86,17 @@ fun NavGraph(
                 navController = navHostController,
                 toGameDetailScreen = {
                     navHostController.navigate(Screens.GameDetailScreen.navToGameDetailScreen(it))
+                },
+                toPlayerDetailScreen = {
+                    navHostController.navigate(Screens.PlayerDetailScreen.navToPlayerDetailScreen(it))
                 }
             )
+        }
+        //Players
+        composable(
+            route = Screens.PlayerDetailScreen.route
+        ){
+            PlayerDetailScreen(navController = navHostController)
         }
     }
 }

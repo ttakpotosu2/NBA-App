@@ -49,6 +49,7 @@ fun StandingsScreen(
     LaunchedEffect(tabIndex) {
         pagerState.animateScrollToPage(tabIndex)
     }
+
     LaunchedEffect(pagerState.currentPage, pagerState.isScrollInProgress) {
         if (!pagerState.isScrollInProgress) {
             tabIndex = pagerState.currentPage

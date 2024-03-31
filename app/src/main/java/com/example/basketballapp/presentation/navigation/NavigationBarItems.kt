@@ -17,7 +17,6 @@ enum class NavigationBarItems(
 	Explore(
 		icon = R.drawable.basketball_men_sport_3_svgrepo_com,
 		route = ""
-	),
-
+	)
 }
 

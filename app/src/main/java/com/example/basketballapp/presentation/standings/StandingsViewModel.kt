@@ -5,8 +5,8 @@ import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.basketballapp.data.repository.StandingsRepo
 import com.example.basketballapp.data.model.StandingDetail
+import com.example.basketballapp.data.repository.StandingsRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -47,7 +47,7 @@ class StandingsViewModel @Inject constructor(
 
     fun getDivisionStandings(league: String, season: String) {
         viewModelScope.launch {
-            listOf("atlantic", "central", "northwest","pacific","southeast").forEach { division ->
+            listOf("atlantic", "central", "northwest","pacific","southeast","southwest").forEach { division ->
                 val response = repository.getDivisionStandings(league, season, division)
                 divisionState[division] = response.toStandings().sortedByDescending { it.win.percentage }
             }

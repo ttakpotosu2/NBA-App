@@ -46,7 +46,8 @@ import com.example.basketballapp.presentation.ui.theme.Anton
 fun TeamDetailScreen(
     navController: NavController,
     viewModel: TeamsViewModel = hiltViewModel(),
-    toGameDetailScreen: (Int) -> Unit
+    toGameDetailScreen: (Int) -> Unit,
+    toPlayerDetailScreen: (Int) -> Unit
 ) {
     val state = viewModel.state.value
 
@@ -146,15 +147,14 @@ fun TeamDetailScreen(
                     ) { index ->
                         when (index) {
                             0 -> {
-                                GamesPerTeamTab(
-                                    onItemClicked = { toGameDetailScreen(it) },
-                                    viewModel = viewModel
-                                )
+                                GamesPerTeamTab(viewModel){
+                                    toGameDetailScreen(it)
+                                }
                             }
                             1 -> {
-                                PlayersPerTeamTab(
-                                    viewModel = viewModel,
-                                    onItemClicked = {})
+                                PlayersPerTeamTab(viewModel, Modifier.fillMaxSize()){
+                                    toPlayerDetailScreen(it)
+                                }
                             }
                             2 -> {
 

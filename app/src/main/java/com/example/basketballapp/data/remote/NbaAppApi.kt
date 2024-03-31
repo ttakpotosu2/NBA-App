@@ -73,6 +73,12 @@ interface NbaAppApi {
     ): TeamStatsResponse
 
     //playerPerId
+    @GET("players")
+    suspend fun getPlayerById(
+        @Query("id") playerId: Int
+    ): PlayersResponse
+
+
     //search
     //stats per player per game
     //stats per

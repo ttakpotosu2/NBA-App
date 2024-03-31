@@ -2,7 +2,6 @@ package com.example.basketballapp.presentation.navigation
 
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -11,7 +10,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -31,7 +30,7 @@ fun NavBar(
 	modifier: Modifier = Modifier
 ) {
 	val navigationBarItems = remember { NavigationBarItems.values() }
-	var selectedIndex by remember { mutableIntStateOf(0) }
+	var selectedIndex by remember { mutableStateOf(0) }
 	
 	AnimatedNavigationBar(
 		selectedIndex = selectedIndex,
@@ -42,26 +41,21 @@ fun NavBar(
 		barColor = Color(0xff363535),
 		ballColor = Color.Red
 	) {
-		navigationBarItems.forEach { item ->
+		navigationBarItems.forEachIndexed { index, navigationBarItems ->
 			Box(
 				modifier = modifier
 					.fillMaxSize()
-					.clickable(
-						interactionSource = MutableInteractionSource(),
-						indication = null
-					) {
-						navController.navigate(item.route)
-						selectedIndex = item.ordinal
+					.clickable{
+						selectedIndex = index
+						navController.navigate(navigationBarItems.route)
 					},
 				contentAlignment = Alignment.Center
 			) {
 				Icon(
-					painter = painterResource(id = item.icon),
-					contentDescription = null,
 					modifier = modifier.size(26.dp),
-					tint = if (selectedIndex == item.ordinal) Color.White else Color.LightGray.copy(
-						0.3f
-					)
+					painter = painterResource(id = navigationBarItems.icon),
+					contentDescription = null,
+					tint = if (selectedIndex == index) Color.Red else Color.LightGray.copy(0.3f)
 				)
 			}
 		}
