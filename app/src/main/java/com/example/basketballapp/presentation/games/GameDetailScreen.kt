@@ -23,11 +23,15 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -42,7 +46,6 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
-import com.example.basketballapp.presentation.navigation.NavBar
 import com.example.basketballapp.presentation.ui.theme.Anton
 
 @Composable
@@ -53,9 +56,11 @@ fun GameDetailScreen(
     toTeamDetailScreen: (Int) -> Unit
 ) {
     val state = viewModel.gamesState.value
+//    val navigationBarItems = remember { NavigationBarItems.values() }
+    var selectedIndex by remember { mutableStateOf(0) }
 
     Scaffold(
-        bottomBar = { NavBar(navController) }
+
     ) { paddingValue ->
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -210,14 +215,14 @@ fun GameDetailScreen(
                                     horizontalAlignment = Alignment.CenterHorizontally
                                 ) {
                                     Text(text = if (i > 4) "OT" else "Q$i", color = Color.Gray)
-                                    Divider(thickness = 1.dp, color = Color.DarkGray)
+                                    HorizontalDivider(thickness = 1.dp, color = Color.DarkGray)
                                     Text(
                                         text = visitingScoresPerQtr[i - 1],
                                         color = Color.White
                                     )
                                 }
                                 if (i < visitingScoresPerQtr.size) {
-                                    Divider(
+                                    HorizontalDivider(
                                         modifier = Modifier
                                             .fillMaxHeight()
                                             .width(1.dp),
@@ -246,11 +251,11 @@ fun GameDetailScreen(
                                     horizontalAlignment = Alignment.CenterHorizontally
                                 ) {
                                     Text(text = if (i > 4) "OT" else "Q$i", color = Color.Gray)
-                                    Divider(thickness = 1.dp, color = Color.DarkGray)
+                                    HorizontalDivider(thickness = 1.dp, color = Color.DarkGray)
                                     Text(text = homeScoresPerQtr[i - 1], color = Color.White)
                                 }
                                 if (i < homeScoresPerQtr.size) {
-                                    Divider(
+                                    HorizontalDivider(
                                         modifier = Modifier
                                             .fillMaxHeight()
                                             .width(1.dp),

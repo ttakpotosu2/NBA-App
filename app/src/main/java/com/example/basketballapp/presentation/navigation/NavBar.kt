@@ -1,7 +1,6 @@
 package com.example.basketballapp.presentation.navigation
 
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -10,8 +9,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,25 +28,26 @@ fun NavBar(
 	navController: NavController,
 	modifier: Modifier = Modifier
 ) {
-	val navigationBarItems = remember { NavigationBarItems.values() }
-	var selectedIndex by remember { mutableStateOf(0) }
-	
+	var selectedIndex by rememberSaveable { mutableIntStateOf(0) }
+
 	AnimatedNavigationBar(
 		selectedIndex = selectedIndex,
-		modifier = modifier.height(80.dp).padding(start = 12.dp, end = 12.dp, bottom = 12.dp),
+		modifier = Modifier
+			.height(80.dp)
+			.padding(start = 12.dp, end = 12.dp, bottom = 12.dp),
 		cornerRadius = shapeCornerRadius(cornerRadius = 30.dp),
 		ballAnimation = Parabolic(tween(300)),
 		indentAnimation = Height(tween(300)),
 		barColor = Color(0xff363535),
 		ballColor = Color.Red
 	) {
-		navigationBarItems.forEachIndexed { index, navigationBarItems ->
+		navigationItems.forEachIndexed { index, navigationBarItems ->
 			Box(
 				modifier = modifier
 					.fillMaxSize()
-					.clickable{
+					.noRippleClickable {
 						selectedIndex = index
-						navController.navigate(navigationBarItems.route)
+						//navController.navigate(navigationBarItems.route)
 					},
 				contentAlignment = Alignment.Center
 			) {

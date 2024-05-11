@@ -41,6 +41,8 @@ fun StandingsScreen(
     toTeamDetailScreen: (Int) -> Unit
 ) {
     val state = standingsViewModel.state.value
+//    val navigationBarItems = remember { NavigationBarItems.values() }
+//    var selectedIndex by remember { mutableStateOf(0) }
 
     var tabIndex by remember { mutableIntStateOf(0) }
     val tabs = listOf("League", "Conference", "Division")
@@ -57,7 +59,9 @@ fun StandingsScreen(
     }
 
     Scaffold(
-        bottomBar = { NavBar(navController) }
+        bottomBar = {
+            NavBar(navController = navController)
+        }
     ) { paddingValues ->
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

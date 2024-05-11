@@ -20,9 +20,12 @@ fun PlayerDetailScreen(
     viewModel: PlayersViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
-
+//    val navigationBarItems = remember { NavigationBarItems.values() }
+//   var selectedIndex by remember { mutableIntStateOf(0) }
     Scaffold(
-        bottomBar = { NavBar(navController) }
+        bottomBar = {
+            NavBar(navController = navController)
+        }
     ) { paddingValue ->
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

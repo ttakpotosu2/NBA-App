@@ -47,7 +47,9 @@ fun GameStatScreen(
     val state = viewModel.state.value
 
     Scaffold(
-        bottomBar = { NavBar(navController) }
+        bottomBar = {
+            NavBar(navController = navController)
+        }
     ) { paddingValue ->
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

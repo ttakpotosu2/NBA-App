@@ -44,6 +44,8 @@ fun GamesScreen(
     toGameDetailScreen: (Int) -> Unit
 ) {
     val state = gamesScreenViewModel.gamesState.value
+//    val navigationBarItems = remember { NavigationBarItems.values() }
+//    var selectedIndex by rememberSaveable { mutableStateOf(0) }
     
     var today = LocalDate.now()
    
@@ -66,7 +68,9 @@ fun GamesScreen(
     }
     
     Scaffold(
-        bottomBar = { NavBar(navController)}
+        bottomBar = {
+            NavBar(navController = navController)
+        }
     ) { paddingValues ->
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

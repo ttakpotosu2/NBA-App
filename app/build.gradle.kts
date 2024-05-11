@@ -87,9 +87,6 @@ dependencies {
     implementation("androidx.wear.compose:compose-material:1.3.0")
     implementation("androidx.wear.compose:compose-foundation:1.3.0")
 
-    //Splashscreen
-    implementation("androidx.core:core-splashscreen:1.1.0-alpha02")
-
     // Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -120,4 +117,7 @@ dependencies {
     
     //Animated Bottom Bar
     implementation("com.exyte:animated-navigation-bar:1.0.0")
+
+    //Splashscreen
+    implementation("androidx.core:core-splashscreen:1.0.1")
 }

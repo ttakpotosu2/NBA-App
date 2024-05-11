@@ -65,7 +65,9 @@ fun TeamDetailScreen(
     }
 
     Scaffold(
-        bottomBar = { NavBar(navController) }
+        bottomBar = {
+            NavBar(navController = navController)
+        }
     ) { paddingValue ->
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
